@@ -1,3 +1,12 @@
+/**
+ * Author: Prof. Richard Krasso
+ * Modified By: Eunice Lim, Adam Luna, Mark Watson
+ * Date: 18 Sept 2021
+ * Title: app.module.ts
+ */
+
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,6 +26,8 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -40,6 +51,8 @@ import { SigninComponent } from './pages/signin/signin.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
