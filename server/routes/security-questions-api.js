@@ -1,10 +1,10 @@
 /**
  * Author: Prof. Richard Krasso
- * Modified By: Eunice Lim, Mark Watson
+ * Modified By: Eunice Lim, Mark Watson, Adam Luna
  * Date: 16 Sept 2021
  * Title: security-questions.js
  * API for security questions
- */
+ */ 
 
 //require statements
 const SecurityQuestions = require ('../models/security-questions');
@@ -46,6 +46,34 @@ router.get('/', async(req, res) =>{
         console.log(e);
         const findAllCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
         res.status(500).send(findAllCatchErrorResponse.toObject());
+    }
+});
+
+/**
+ * FindById API
+ */
+router.get('/:id', async(req, res) => {
+    try
+    {
+        SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion) {
+            if(err)
+            {
+                console.log(err);
+                const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(findByIdMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(securityQuestion);
+                const findByIdResponse = new BaseResponse(200, 'Query successful', securityQuestion);
+                res.json(findByIdResponse.toObject());
+            }
+        })
+    } catch(e)
+    {
+        console.log(e);
+        const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(findByIdCatchErrorResponse.toObject());
     }
 });
 
@@ -131,6 +159,50 @@ router.put('/:id', async(req, res) => {
 
 });
       
+/**
+ * DeleteSecurityQuestion API
+ */
+router.delete('/:id', async(req, res) => {
+    try
+    {
+        SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion) {
+            if(err)
+            {
+                console.log(err);
+                const deleteSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(deleteSecurityQuestionMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(securityQuestion);
 
+                securityQuestion.set({
+                    isDisabled: true
+                });
+
+                securityQuestion.save(function (err, savedSecurityQuestion) {
+                    if (err)
+                    {
+                        console.log(err);
+                        const savedSecurityQuestionMongodbErrorResponse = ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(savedSecurityQuestionMongodbErrorResponse.toObject());
+                    }
+                    else
+                    {
+                        console.log(savedSecurityQuestion);
+                        const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query successful', savedSecurityQuestion);
+                        res.json(deleteSecurityQuestionResponse.toObject());
+                    }
+                })
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const deleteSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(deleteSecurityQuestionCatchErrorResponse.toObject());
+    }
+});
 
 module.exports = router;
