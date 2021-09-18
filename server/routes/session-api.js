@@ -1,7 +1,8 @@
 /*
 ============================================
 ; Title: session-api.js
-; Author: Adam Luna
+; Author: Professor Krasso
+; Modified by: Adam Luna
 ; Date: 18 September 2021
 ; Description: Session API for managing users
 ;===========================================

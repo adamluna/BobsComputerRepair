@@ -1,7 +1,8 @@
 /*
 ============================================
 ; Title: app.js
-; Author: Adam Luna
+; Author: Professor Krasso
+; Modified by: Adam Luna
 ; Date: 18 September 2021
 ; Description: App JS file
 ;===========================================
