@@ -1,19 +1,34 @@
+/*
+============================================
+; Title: app.js
+; Author: Adam Luna
+; Date: 18 September 2021
+; Description: App JS file
+;===========================================
+*/
+
 /**
  * Require statements
  */
 const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+
+/**
+ * Routes
+ */
+const UserApi = require('./routes/user-api');
+const SessionApi = require('./routes/session-api');
+const SecurityQuestionApi = require('./routes/security-questions-api');
 
 /**
  * App configurations
  */
 let app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended': true}));
+app.use(express.json());
+app.use(express.urlencoded({'extended': true}));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
@@ -21,7 +36,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 /**
  * Variables
  */
-const port = 3000; // server port
+const port = process.env.PORT || 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
 const conn = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/bcrs?retryWrites=true&w=majority';
@@ -42,6 +57,9 @@ mongoose.connect(conn, {
 /**
  * API(s) go here...
  */
+app.use('/api/users', UserApi);
+app.use('/api/session', SessionApi);
+app.use('/api/security-question', SecurityQuestionApi);
 
 /**
  * Create and start server
