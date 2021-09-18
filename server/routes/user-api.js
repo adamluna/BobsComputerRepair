@@ -47,10 +47,35 @@ const saltRounds = 10; //default salt rounds for hashing algorithm
     }
   });
 
+/**
+ * FindById
+ */
+router.get('/:id', async(req, res) => {
+    try {
+        User.findOne({'_id': req.params.id}, function(err, user){
+            if(err){
+                console.log(err);
+                const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(findByIdMongodbErrorResponse.toObject());
+            }
+            else {
+                console.log(user);
+                const findByIdResponse = new BaseResponse(200, 'Query successful', user);
+                res.json(findByIdResponse.toObject());
+            }
+        })
+    }
+    catch(e){
+        console.log(e);
+        const findByIdCatchErrorResponse = new ErrorResponse (500, 'Internal server error', e);
+        res.status(500).send(findByIdCatchErrorResponse.toObject());
+    }
+});
+
   /**
  * UpdateUser
  */
-router.put("/:id", async (req, res) => {
+   router.put("/:id", async (req, res) => {
     try {
       // find the user by id
       User.findOne({ _id: req.params.id }, function (err, user) {
@@ -93,31 +118,6 @@ router.put("/:id", async (req, res) => {
       res.status(500).send(updateUserCatchErrorResponse.toObject());
     }
   });
-
-/**
- * FindById
- */
-router.get('/:id', async(req, res) => {
-    try {
-        User.findOne({'_id': req.params.id}, function(err, user){
-            if(err){
-                console.log(err);
-                const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                res.status(500).send(findByIdMongodbErrorResponse.toObject());
-            }
-            else {
-                console.log(user);
-                const findByIdResponse = new BaseResponse(200, 'Query successful', user);
-                res.json(findByIdResponse.toObject());
-            }
-        })
-    }
-    catch(e){
-        console.log(e);
-        const findByIdCatchErrorResponse = new ErrorResponse (500, 'Internal server error', e);
-        res.status(500).send(findByIdCatchErrorResponse.toObject());
-    }
-});
 
 /**
  * DeleteUser
