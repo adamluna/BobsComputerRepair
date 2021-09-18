@@ -1,6 +1,6 @@
 /**
  * Author: Prof. Richard Krasso
- * Modified By: Eunice Lim
+ * Modified By: Eunice Lim, Mark Watson
  * Date: 16 Sept 2021
  * Title: security-questions.js
  * API for security questions
