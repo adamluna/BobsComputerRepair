@@ -1,1 +1,58 @@
-<p>security-question-create works!</p>
+<!--
+============================================
+; Title:  security-question-create.component.html
+; Author: Professor Krasso
+; Modified by: Adam Luna
+; Date: 18 September 2021
+; Description: HTML file for the create security question page
+;===========================================
+-->
+
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Create Security Question</mat-card-title>
+
+    <br />
+
+    <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionform>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['text']"
+              placeholder="Question text"
+              (keydown.enter)="create()"
+            />
+
+            <mat-error
+              *ngIf="
+                form.controls.text.hasError('required') &&
+                form.controls.text.touched
+              "
+              class="error"
+            >
+              Security questions is a required field.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br />
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warn">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          [disabled]="!form.valid"
+          mat-raised-button
+          color="accent"
+        >
+          Submit
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
