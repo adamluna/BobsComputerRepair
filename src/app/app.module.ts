@@ -28,6 +28,7 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { SigninComponent } from './pages/signin/signin.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserListComponent } from './pages/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DeleteRecordDialogComponent,
     SecurityQuestionDetailsComponent,
     SecurityQuestionListComponent,
-    SigninComponent
+    SigninComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
