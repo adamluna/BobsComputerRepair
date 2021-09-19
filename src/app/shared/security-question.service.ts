@@ -14,10 +14,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SecurityQuestionService {
-  static findSecurityQuestionById: any;
-  static updatedSecurityQuestion: any;
-  static findAllSecurityQuestions: any;
-  static deleteSecurityQuestion: any;
+
 
   constructor(private http: HttpClient) { }
 
