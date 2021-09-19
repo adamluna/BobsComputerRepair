@@ -30,6 +30,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
     SecurityQuestionListComponent,
     SigninComponent,
     UserListComponent,
-    SecurityQuestionCreateComponent
+    SecurityQuestionCreateComponent,
+    UserCreateComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
