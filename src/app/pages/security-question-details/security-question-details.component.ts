@@ -31,7 +31,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder,
     private router: Router,
-    private securityQuestionService = SecurityQuestionService
+    private securityQuestionService: SecurityQuestionService
   ) {
     this.questionId = this.route.snapshot.paramMap.get("questionId");
 
@@ -62,7 +62,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     };
 
     this.securityQuestionService
-      .updatedSecurityQuestion(this.questionId, updatedSecurityQuestion)
+      .updateSecurityQuestion(this.questionId, updatedSecurityQuestion)
       .subscribe((res) => {
         this.router.navigate(["/security-questions"]);
       });

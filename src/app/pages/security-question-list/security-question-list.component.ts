@@ -24,7 +24,7 @@ export class SecurityQuestionListComponent implements OnInit {
   securityQuestions: SecurityQuestion[];
   displayColumns = ["question", "functions"];
 
-  constructor(private dialog: MatDialog, private securityQuestionService = SecurityQuestionService) {
+  constructor(private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
     this.securityQuestionService.findAllSecurityQuestions().subscribe(
       (res) => {
         this.securityQuestions = res["data"];

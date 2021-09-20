@@ -7,7 +7,8 @@
  */ 
 
 //require statements
-const SecurityQuestions = require ('../models/security-questions');
+const express = require('express');
+const SecurityQuestions = require ('../models/security-question');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
 
