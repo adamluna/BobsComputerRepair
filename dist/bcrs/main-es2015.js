@@ -817,7 +817,7 @@ class SigninComponent {
                 /**
                  * User is authenticated and we can grant them access
                  */
-                this.cookieService.set("sessioniser", res["data"].userName, 1);
+                this.cookieService.set("sessionuser", res["data"].userName, 1);
                 this.router.navigate(["/"]);
             }
         }, (err) => {

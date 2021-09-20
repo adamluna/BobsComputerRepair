@@ -1600,7 +1600,7 @@
                 /**
                  * User is authenticated and we can grant them access
                  */
-                _this6.cookieService.set("sessioniser", res["data"].userName, 1);
+                _this6.cookieService.set("sessionuser", res["data"].userName, 1);
 
                 _this6.router.navigate(["/"]);
               }
