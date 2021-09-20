@@ -23,7 +23,7 @@ const router = express.Router();
 router.get('/', async(req, res) =>{
     try
     {
-        SecurityQuestion.find({})
+        SecurityQuestions.find({})
         .where('isDisabled')
         .equals(false)
         .exec(function(err, securityQuestions)
@@ -56,7 +56,7 @@ router.get('/', async(req, res) =>{
 router.get('/:id', async(req, res) => {
     try
     {
-        SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion) {
+        SecurityQuestions.findOne({'_id': req.params.id}, function(err, securityQuestion) {
             if(err)
             {
                 console.log(err);
@@ -88,7 +88,7 @@ router.get('/:id', async(req, res) => {
         text: req.body.text
       };
   
-      SecurityQuestion.create(newSecurityQuestion, function(err, securityQuestion) {
+      SecurityQuestions.create(newSecurityQuestion, function(err, securityQuestion) {
         // on error
         if (err) {
           console.log(err);
@@ -118,7 +118,7 @@ router.get('/:id', async(req, res) => {
 router.put('/:id', async(req, res) => {
     try
     {
-        SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
+        SecurityQuestions.findOne({'_id': req.params.id}, function(err, securityQuestion){
             if (err)
             {
                 console.log(err);
@@ -166,7 +166,7 @@ router.put('/:id', async(req, res) => {
 router.delete('/:id', async(req, res) => {
     try
     {
-        SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion) {
+        SecurityQuestions.findOne({'_id': req.params.id}, function(err, securityQuestion) {
             if(err)
             {
                 console.log(err);
