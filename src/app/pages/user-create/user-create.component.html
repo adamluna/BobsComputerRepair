@@ -1,3 +1,6 @@
+
+<br />
+
 <div fxLayout="column">
     <mat-card class="mat-elevation-z8">
 
@@ -83,12 +86,12 @@
         <!-- buttons -->
         <mat-card-actions fxLayoutAlign="end">
           <!-- cancel -->
-          <button mat-raised-button (click)="cancel()">
+          <button mat-raised-button (click)="cancel()" color="warn">
             Cancel
           </button>
 
           <!-- submit -->
-          <button mat-raised-button [disabled]="!form.valid" color="secondary">
+          <button class="hp-background" mat-raised-button [disabled]="!form.valid">
             Submit
           </button>
         </mat-card-actions>
