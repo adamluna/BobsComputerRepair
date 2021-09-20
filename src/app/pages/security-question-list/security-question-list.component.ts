@@ -55,8 +55,7 @@ export class SecurityQuestionListComponent implements OnInit {
           .subscribe((res) => {
             console.log("Security question deleted");
             this.securityQuestions = this.securityQuestions.filter(
-              (q) => q._id !== recordId
-            );
+              q => q._id !== recordId);
           });
       }
     });
