@@ -5,9 +5,11 @@
 
       <br />
 
+      <!-- create user form -->
       <form [formGroup]="form" (ngSubmit)="createUser()" #userForm (keydown.enter)="$event.preventDefault()">
         <mat-card-content>
           <div fxLayout="column" fxLayoutGap="10px">
+            <!-- username field -->
             <mat-form-field>
               <input type="text" matInput [formControl]="form.controls['userName']" placeholder="username">
   
@@ -16,6 +18,7 @@
               </mat-error>
             </mat-form-field>
   
+            <!-- password field -->
             <mat-form-field>
               <input type="password" matInput [formControl]="form.controls['password']" placeholder="password">
   
@@ -29,6 +32,7 @@
               </mat-error>
             </mat-form-field>
   
+            <!-- first name field -->
             <mat-form-field>
               <input type="text" matInput [formControl]="form.controls['firstName']" placeholder="first name">
               <mat-error class="error" *ngIf="form.controls.firstName.hasError('required') && form.controls.firstName.touched">
@@ -36,6 +40,7 @@
               </mat-error>
             </mat-form-field>
   
+            <!-- last name field -->
             <mat-form-field>
               <input type="text" matInput [formControl]="form.controls['lastName']" placeholder="last name">
               <mat-error class="error" *ngIf="form.controls.lastName.hasError('required') && form.controls.lastName.touched">
@@ -43,6 +48,7 @@
               </mat-error>
             </mat-form-field>
   
+            <!-- phone number field -->
             <mat-form-field>
               <input type="text" matInput [formControl]="form.controls['phoneNumber']" placeholder="phone number">
               <mat-error class="error" *ngIf="form.controls.phoneNumber.hasError('required') && form.controls.phoneNumber.touched">
@@ -50,6 +56,7 @@
               </mat-error>
             </mat-form-field>
   
+            <!-- address field -->
             <mat-form-field>
               <input type="text" matInput [formControl]="form.controls['address']" placeholder="address">
               <mat-error class="error" *ngIf="form.controls.address.hasError('required') && form.controls.address.touched">
@@ -57,6 +64,7 @@
               </mat-error>
             </mat-form-field>
   
+            <!-- email field -->
             <mat-form-field>
               <input type="text" matInput [formControl]="form.controls['email']" placeholder="email">
               <mat-error class="error" *ngIf="form.controls.email.hasError('required') && form.controls.email.touched">
@@ -72,11 +80,14 @@
 
         <br />
 
+        <!-- buttons -->
         <mat-card-actions fxLayoutAlign="end">
+          <!-- cancel -->
           <button mat-raised-button (click)="cancel()">
             Cancel
           </button>
-          
+
+          <!-- submit -->
           <button mat-raised-button [disabled]="!form.valid" color="secondary">
             Submit
           </button>
