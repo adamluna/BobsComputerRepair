@@ -1,7 +1,7 @@
 /**
  * Date: 18 September 2021
  * Title: BCRS - Security Question Create
- * Author: Mark Watson
+ * Author: Mark Watson, Adam Luna
  * Description: Security question create component.
  */
 
@@ -35,7 +35,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
     }
 
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
-      this.router.navigate(['security-questions']);
+      this.router.navigate(['/security-questions']);
     }, err => {
       console.log(err);
     });
