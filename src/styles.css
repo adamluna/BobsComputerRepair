@@ -1,4 +1,36 @@
+/**
+ * Date: 18 September 2021
+ * Title: BCRS - Global Styles
+ * Author: Mark Watson
+ * Description: The BCRS global CSS file.
+ */
+
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+.hp-background {
+    background-color: #fdda38;
+}
+
+.hp-background-2 {
+    background-color: #2f2f2d;
+}
+
+.hp-primary {
+    color: #fdda38;
+}
+
+.hp-secondary {
+    color: #2f2f2d;
+}
+
+.hp-tertiary {
+    color: #fff;
+}
