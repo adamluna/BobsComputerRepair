@@ -33,7 +33,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     private router: Router,
     private securityQuestionService: SecurityQuestionService
   ) {
-    this.questionId = this.route.snapshot.paramMap.get("questionId");
+    this.questionId = this.route.snapshot.paramMap.get("id");
 
     this.securityQuestionService
       .findSecurityQuestionById(this.questionId)
@@ -56,10 +56,10 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     });
   }
 
+  // updates the question
   saveQuestion(): void {
-    const updatedSecurityQuestion: SecurityQuestion = {
-      text: this.form.controls.text.value,
-    };
+    const updatedSecurityQuestion = {} as SecurityQuestion;
+    updatedSecurityQuestion.text = this.form.controls.text.value;
 
     this.securityQuestionService
       .updateSecurityQuestion(this.questionId, updatedSecurityQuestion)
