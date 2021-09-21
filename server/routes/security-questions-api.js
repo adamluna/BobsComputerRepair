@@ -81,7 +81,7 @@ router.get('/:id', async(req, res) => {
 /**
  * CreateSecurityQuestion API
  */
- router.post('/', async (req, res) => {
+ router.post('/', async(req, res) => {
     try {
       // inputted security question 
       let newSecurityQuestion = {
@@ -108,7 +108,7 @@ router.get('/:id', async(req, res) => {
       const createSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
       res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
     }
-  })
+  });
 
 
 /**

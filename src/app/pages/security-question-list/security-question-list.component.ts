@@ -23,7 +23,7 @@ import { SecurityQuestion } from "./../../shared/security-question.interface";
 })
 export class SecurityQuestionListComponent implements OnInit {
   securityQuestions: SecurityQuestion[];
-  displayColumns = ["question", "functions"];
+  displayedColumns = ["question", "functions"];
 
   constructor(private http: HttpClient, private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
     this.securityQuestionService.findAllSecurityQuestions().subscribe(
@@ -53,7 +53,7 @@ export class SecurityQuestionListComponent implements OnInit {
       if (result === "confirm") {
         this.securityQuestionService
           .deleteSecurityQuestion(recordId)
-          .subscribe((res) => {
+          .subscribe(res => {
             console.log("Security question deleted");
             this.securityQuestions = this.securityQuestions.filter(
               q => q._id !== recordId);
