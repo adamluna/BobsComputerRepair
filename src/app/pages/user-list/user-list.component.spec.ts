@@ -1,3 +1,11 @@
+/**
+ * Title: BCRS - User List Component
+ * Author: Prof. Richard Krasso
+ * Modified By: Eunice Lim, Adam Luna, Mark Watson
+ * Date: 21 Sept 2021
+ * Description: User list component spec TS file.
+ */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';

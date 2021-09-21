@@ -1,3 +1,11 @@
+/**
+ * Title: BCRS - Create User Component
+ * Author: Prof. Richard Krasso
+ * Modified By: Eunice Lim, Adam Luna, Mark Watson
+ * Date: 21 Sept 2021
+ * Description: Create user component spec TS file.
+ */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserCreateComponent } from './user-create.component';

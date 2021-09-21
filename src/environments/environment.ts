@@ -1,3 +1,11 @@
+/**
+ * Title: BCRS - Environment
+ * Author: Prof. Richard Krasso
+ * Modified By: Eunice Lim, Adam Luna, Mark Watson
+ * Date: 21 Sept 2021
+ * Description: Environment TS file.
+ */
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.

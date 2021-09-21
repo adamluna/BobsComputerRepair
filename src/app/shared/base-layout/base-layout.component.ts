@@ -1,3 +1,11 @@
+/**
+ * Title: BCRS - Base Layout Component
+ * Author: Prof. Richard Krasso
+ * Modified By: Eunice Lim, Adam Luna, Mark Watson
+ * Date: 21 Sept 2021
+ * Description: Base layout component TS file.
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';

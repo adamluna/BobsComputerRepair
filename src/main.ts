@@ -1,3 +1,11 @@
+/**
+ * Title: BCRS
+ * Author: Prof. Richard Krasso
+ * Modified By: Eunice Lim, Adam Luna, Mark Watson
+ * Date: 21 Sept 2021
+ * Description: Main TS file.
+ */
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
