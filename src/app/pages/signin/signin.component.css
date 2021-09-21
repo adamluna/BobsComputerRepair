@@ -1,0 +1,12 @@
+#bcrs {
+    text-align: center; 
+    padding-left: 10%; 
+    margin-bottom: 15px;
+    text-shadow: 0.05em 0.05em 0.05em grey;
+    
+}
+
+mat-card {
+    position: relative;
+    bottom: 100px;
+}
