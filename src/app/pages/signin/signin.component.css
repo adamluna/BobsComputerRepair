@@ -10,3 +10,8 @@ mat-card {
     position: relative;
     bottom: 100px;
 }
+
+#signin-btn {
+    max-width: 500px;
+    margin: 0 auto;
+}
