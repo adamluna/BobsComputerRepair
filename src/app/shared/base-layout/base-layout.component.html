@@ -2,7 +2,7 @@
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar class="hp-background">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
@@ -11,9 +11,39 @@
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" mat-button>About</button>
       </div>
+      <div fxFlex></div>
+        
+      <!--button to open menu-->
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+
+      <mat-menu #profileMenu> <!--this menu is shown if profile pic is clicked-->
+        
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item routerLink='/users'>
+        <mat-icon>manage_accounts</mat-icon>
+        <span>User Configuration</span>
+      </button>
+
+      <button mat-menu-item routerLink="/security-questions">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span>Security Questions Configuration</span>
+      </button>
+
+      <button mat-menu-item (click)="signOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Sign Out</span>
+      </button>
+      
+</mat-menu>
 
     </mat-toolbar>
   </nav>
+
+  <br />
 
   <!-- main content -->
   <div fxFlex>
@@ -25,12 +55,14 @@
   <!-- footer -->
   <div fxFlex>
     <footer class="footer">
-      <mat-toolbar class="footer-content">
+      <mat-toolbar class="hp-background-2 hp-tertiary footer-content">
         <p>
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="hp-primary bu-link" target="_blank">Bellevue University</a> - <a href="https://github.com/adamluna/BobsComputerRepair" class="hp-primary bu-link" target="_blank">Team Hufflepuff</a> 
         </p>
+        <div style="margin-left: auto">
+          <a href="https://github.com/adamluna/BobsComputerRepair" class="hp-primary bu-link" target="_blank"><img class="crest" alt="Hufflepuff Crest - source: https://cdn.shopify.com/s/files/1/1325/3287/products/HP8038C_2000x.png?v=1546230458" src="./assets/hufflepuff-crest.png"></a>
+        </div>
       </mat-toolbar>
     </footer>
   </div>
-
 </div>
