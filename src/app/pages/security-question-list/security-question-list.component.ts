@@ -11,6 +11,7 @@
 // import statements
 import { DeleteRecordDialogComponent } from "./../../shared/delete-record-dialog/delete-record-dialog.component";
 import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import { MatDialog } from "@angular/material/dialog";
 import { SecurityQuestionService } from "./../../shared/security-question.service";
 import { SecurityQuestion } from "./../../shared/security-question.interface";
@@ -24,7 +25,7 @@ export class SecurityQuestionListComponent implements OnInit {
   securityQuestions: SecurityQuestion[];
   displayColumns = ["question", "functions"];
 
-  constructor(private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
+  constructor(private http: HttpClient, private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
     this.securityQuestionService.findAllSecurityQuestions().subscribe(
       (res) => {
         this.securityQuestions = res["data"];
