@@ -59,7 +59,7 @@ export class UserCreateComponent implements OnInit {
       lastName: this.form.controls.lastName.value,
       phoneNumber: this.form.controls.phoneNumber.value,
       address: this.form.controls.address.value,
-      email: this.form.controls.address.value,
+      email: this.form.controls.email.value,
     };
 
     this.userService.createUser(newUser).subscribe(
