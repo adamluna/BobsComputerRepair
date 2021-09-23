@@ -37,6 +37,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
+import { AboutComponent } from './pages/about/about.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 @NgModule({
@@ -52,7 +56,11 @@ import { MatMenuModule } from '@angular/material/menu';
     UserListComponent,
     SecurityQuestionCreateComponent,
     UserCreateComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AboutComponent,
+    ErrorComponent,
+    NotFoundComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 /**
- * Date: 18 September 2021
+ * Date: 23 September 2021
  * Title: BCRS - App Routing
- * Author: Mark Watson
+ * Author: Mark Watson, Eunice Lim
  * Description: App routing file.
  */
 
@@ -18,6 +18,8 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { AuthGuard } from './shared/auth.guard';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   {
@@ -51,7 +53,11 @@ const routes: Routes = [
       {
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent
-      }
+      },
+      {
+        path: '404',
+        component: NotFoundComponent
+      },
     ],
     canActivate: [AuthGuard],
   },
@@ -63,7 +69,35 @@ const routes: Routes = [
         path: 'signin',
         component: SigninComponent,
       },
-    ],
+     /* {
+        path:'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameFormComponent
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsFormComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordFormComponent
+      },*/
+      {                 /*Not sure if 404 and 500 should be here or above under BaseLayoutComponent as the header/footer does not show */
+        path: '404',
+        component: NotFoundComponent
+      },
+      {
+        path: '500',
+        component: ErrorComponent
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: 'session/404'
   }
 ];
 
