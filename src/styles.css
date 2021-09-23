@@ -15,6 +15,10 @@ body {
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
+tbody tr:hover {
+    background-color: #fdda38;
+}
+
 .hp-background {
     background-color: #fdda38;
 }
