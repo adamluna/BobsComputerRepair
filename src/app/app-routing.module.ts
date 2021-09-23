@@ -53,11 +53,7 @@ const routes: Routes = [
       {
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent
-      },
-      {
-        path: '404',
-        component: NotFoundComponent
-      },
+      }
     ],
     canActivate: [AuthGuard],
   },
@@ -85,7 +81,8 @@ const routes: Routes = [
         path: 'reset-password',
         component: ResetPasswordFormComponent
       },*/
-      {                 /*Not sure if 404 and 500 should be here or above under BaseLayoutComponent as the header/footer does not show */
+      /* 404 and 500 page. All invalid paths redirect to 404 */
+      {
         path: '404',
         component: NotFoundComponent
       },

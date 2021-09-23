@@ -7,6 +7,7 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+/* Default element styles */
 html, body { 
     height: 100%; 
 }
@@ -15,10 +16,24 @@ body {
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
+mat-card {
+    overflow: auto;
+}
+
+table {
+    margin: auto 0;
+    width: 100%;
+}
+
 tbody tr:hover {
     background-color: #fdda38;
 }
 
+th, td {
+    padding: 0 5px !important;
+}
+
+/* Global custom classes */
 .hp-background {
     background-color: #fdda38;
 }
@@ -37,4 +52,18 @@ tbody tr:hover {
 
 .hp-tertiary {
     color: #fff;
+}
+
+.hp-card {
+    width: 75%; 
+    max-width: 1000px; 
+    min-width: 400px;
+    margin: 0 auto;
+}
+
+.hp-card-sm {
+    width: 50%; 
+    max-width: 750px; 
+    min-width: 400px;
+    margin: 0 auto;
 }

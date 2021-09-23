@@ -11,6 +11,10 @@
   font-weight: lighter;;
 }
 
+nav, mat-toolbar {
+  width: 100%;
+}
+
 .navbar-container {
   padding: 5px;
 }
@@ -25,12 +29,12 @@ mat-toolbar {
 }
 
 .main-content {
-  padding-left: 30px;
+  margin-bottom: 100px;
 }
 
 .footer {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
