@@ -98,55 +98,47 @@ router.get("/:id", async (req, res) => {
  */
 router.post("/", async (req, res) => {
   try {
-    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-    standardRole = {
-      role: "standard",
-    };
-    // user object
-    let newUser = {
-      userName: req.body.userName,
-      password: hashedPassword,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      email: req.body.email,
-      role: standardRole,
-    };
-
-    /**
-     * Use findOne to check if the username exists
-     */
-    User.findOne({ userName: req.body.userName }, function (err, user) {
+    User.findOne({ username: req.body.userName }, (err, user) => {
       if (err) {
-        // if there is an error
         console.log(err);
-        const createMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
+        const createUserMongoDbErrorResponse = new ErrorResponse(
+          "500",
+          "MongoDB server error",
           err
         );
-        res.status(500).send(createMongodbErrorResponse.toObject());
+        res.status(501).send(createUserMongoDbErrorResponse.toObject());
       } else {
         if (user) {
-          // if the user exists
-          const createUserExistsErrorResponse = new ErrorResponse(
-            400,
-            "This user already exists",
-            user
-          );
-          res.status(400).send(createUserExistsErrorResponse.toObject());
-        } else {
+          console.log(user);
+
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+
+          standardRole = {
+            role: "standard",
+          };
+
+          // user object
+          let newUser = {
+            userName: req.body.userName,
+            password: hashedPassword,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber,
+            address: req.body.address,
+            email: req.body.email,
+            role: standardRole,
+          };
+
           // create user
           User.create(newUser, function (err, user) {
             if (err) {
               console.log(err);
-              const createUserMongodbErrorResponse = new ErrorResponse(
+              const createUserMongoDbErrorResponse = new ErrorResponse(
                 500,
                 "Internal server error",
                 err
               );
-              res.status(500).send(createUserMongodbErrorResponse.toObject());
+              res.status(500).send(createUserMongoDbErrorResponse.toObject());
             } else {
               console.log(user);
               const createUserResponse = new BaseResponse(
@@ -157,9 +149,17 @@ router.post("/", async (req, res) => {
               res.json(createUserResponse.toObject());
             }
           });
+        } else {
+          console.log(`Username ${req.body.userName} already exists.`);
+          const userInUseError = new BaseResponse(
+            "400",
+            `The username '${req.body.userName}' is already in use.`,
+            null
+          );
+          res.status(400).send(userInUseError.toObject());
         }
       }
-    });
+    })
   } catch (e) {
     console.log(e);
     const createUserCatchErrorResponse = new ErrorResponse(
@@ -283,6 +283,42 @@ router.delete("/:id", async (req, res) => {
       e.message
     );
     res.status(500).send(deleteUserCatchErrorResponse.toObject());
+  }
+});
+
+/**
+ * FindSelectedSecurityQuestions
+ */
+router.get("/:userName/security-question", async (req, res) => {
+  try {
+    user.findOne({ userName: req.params.userName }, function (err, user) {
+      if (err) {
+        console.log(err);
+        const findSelectedSecurityQuestionsMongodbErrorResponse =
+          new ErrorResponse("500", "Internal server error", err);
+        res
+          .status(500)
+          .send(findSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        const findSelectedSecurityQuestionsResponse = new BaseResponse(
+          "200",
+          "Query successful",
+          user.selectedSecurityQuestions
+        );
+        res.json(findSelectedSecurityQuestionsResponse.toObject());
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse(
+      "500",
+      "Internal server error",
+      e
+    );
+    res
+      .status(500)
+      .send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
   }
 });
 
