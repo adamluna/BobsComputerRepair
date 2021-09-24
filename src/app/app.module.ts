@@ -20,7 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
@@ -41,6 +41,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ErrorInterceptor } from './shared/error.interceptor';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     AboutComponent,
     ErrorComponent,
     NotFoundComponent,
-    ContactComponent
+    ContactComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,11 @@ import { ContactComponent } from './pages/contact/contact.component';
     MatDividerModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
