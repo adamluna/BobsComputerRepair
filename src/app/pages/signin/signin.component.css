@@ -16,16 +16,11 @@
 
 mat-card {
     position: relative;
-    bottom: 100px;
 }
 
 #signin-btn {
     max-width: 500px;
     margin: 0 auto;
-}
-
-.hp-background {
-    padding-bottom: -2rem;
 }
 
 /* Footer styling */
@@ -35,8 +30,12 @@ mat-card {
 }
 
 .signin-footer-container a {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0 10px;
     text-decoration: none;
     color: #878787;
+}
+
+.signin-footer-container a:hover {
+    color: #2f2f2D;
+    text-decoration: underline;
 }
