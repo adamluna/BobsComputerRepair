@@ -44,7 +44,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/verify-security-questions-form/verify-security-questions-form.component';
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 @NgModule({
@@ -86,6 +87,8 @@ import { VerifySecurityQuestionsFormComponent } from './shared/verify-security-q
     MatTableModule,
     MatDividerModule,
     MatMenuModule,
+    MessagesModule,
+    MessageModule
         
   ],
   providers: [
