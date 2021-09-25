@@ -20,6 +20,8 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { AuthGuard } from './shared/auth.guard';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       },
       {
         path: 'users',

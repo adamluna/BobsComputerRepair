@@ -43,6 +43,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
+import { VerifySecurityQuestionsFormComponent } from './shared/verify-security-questions-form/verify-security-questions-form.component';
+
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { RegisterComponent } from './pages/register/register.component';
     ErrorComponent,
     NotFoundComponent,
     ContactComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifySecurityQuestionsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ import { RegisterComponent } from './pages/register/register.component';
     MatInputModule,
     MatTableModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+        
   ],
   providers: [
     {

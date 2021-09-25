@@ -7,7 +7,7 @@
 ; Description: Register component TypeScript file
 ;===========================================
 */
-// import staements
+// import statements
 import { Component, OnInit } from '@angular/core';
 import {SecurityQuestionService} from './../../shared/security-question.service';
 import {SecurityQuestion} from './../../shared/security-question.interface';
