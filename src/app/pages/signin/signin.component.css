@@ -23,3 +23,20 @@ mat-card {
     max-width: 500px;
     margin: 0 auto;
 }
+
+.hp-background {
+    padding-bottom: -2rem;
+}
+
+/* Footer styling */
+.signin-footer-container {
+    margin: auto;
+    white-space: nowrap;
+}
+
+.signin-footer-container a {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #878787;
+}
