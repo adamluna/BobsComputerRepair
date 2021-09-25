@@ -7,8 +7,11 @@ img{
   }
   
   .btn_error{
-      display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width:auto;
+    background-color: #fdda38;
+    color:#2f2f2d;
+
   }
