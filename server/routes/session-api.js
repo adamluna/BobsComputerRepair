@@ -103,9 +103,9 @@ router.post('/signin', async(req, res) => {
         User.findOne({ userName: req.body.userName }, function (err, user) {
             // on error
             if (err) {
-            console.log(err);
-            const createMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            res.status(500).send(createMongodbErrorResponse.toObject());
+                console.log(err);
+                const createMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(createMongodbErrorResponse.toObject());
             // if new user is valid
             } else {
                 // if username already exists
@@ -146,9 +146,9 @@ router.get("/verify/users/:userName", async (req, res) => {
         User.findOne({ userName: req.params.userName }, function (err, user) {
             // on error
             if (err) {
-            console.log(err);
-            const verifyUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            return res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+                console.log(err);
+                const verifyUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                return res.status(500).send(verifyUserMongodbErrorResponse.toObject());
             } else {
                 // user not found
                 if (!user) {
@@ -178,9 +178,9 @@ router.get("/verify/users/:userName", async (req, res) => {
         User.findOne({ userName: req.params.userName }, function (err, user) {
             // on error
             if (err) {
-            console.log(err);
-            const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            res.status(500).send(verifySecurityQuestionsMongodbErrorResponse.toObject());
+                console.log(err);
+                const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(verifySecurityQuestionsMongodbErrorResponse.toObject());
             // on success
             } else {
                 console.log(user);
@@ -224,9 +224,9 @@ router.post('/users/:userName/reset-password', async (req, res) => {
         User.findOne({ userName: req.params.userName }, function (err, user) {
         // on error
             if (err) {
-            console.log(err);
-            const resetPasswordMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
+                console.log(err);
+                const resetPasswordMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
             // on success
             } else {
                 console.log(user); 
@@ -240,14 +240,14 @@ router.post('/users/:userName/reset-password', async (req, res) => {
                 user.save(function (err, updatedUser) {
                     // on error
                     if (err) {
-                    console.log(err);
-                    const updatedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                    res.status(500).send(updatedUserMongodbErrorResponse.toObject());
+                        console.log(err);
+                        const updatedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(updatedUserMongodbErrorResponse.toObject());
                     // on successful save
                     } else {
-                    console.log(updatedUser);
-                    const updatedPasswordResponse = new BaseResponse(200, 'Query successful', updatedUser);
-                    res.json(updatedPasswordResponse.toObject());
+                        console.log(updatedUser);
+                        const updatedPasswordResponse = new BaseResponse(200, 'Query successful', updatedUser);
+                        res.json(updatedPasswordResponse.toObject());
                     }
                 });
             }

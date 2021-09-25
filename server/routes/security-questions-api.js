@@ -83,32 +83,32 @@ router.get('/:id', async(req, res) => {
  */
  router.post('/', async(req, res) => {
     try {
-      // inputted security question 
-      let newSecurityQuestion = {
-        text: req.body.text
-      };
+        // inputted security question 
+        let newSecurityQuestion = {
+            text: req.body.text
+        };
   
-      SecurityQuestions.create(newSecurityQuestion, function(err, securityQuestion) {
-        // on error
-        if (err) {
-          console.log(err);
-          const createSecurityQuestionMongodbErrorResponse =  new ErrorResponse(500, 'Internal Server Error', err);
-          res.status(500).send(createSecurityQuestionMongodbErrorResponse.toObject());
-        // create question if valid
-        } else {  
-          console.log(securityQuestion);
-          const createSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', securityQuestion);
-          res.json(createSecurityQuestionResponse.toObject());
-        }
-      })
+        SecurityQuestions.create(newSecurityQuestion, function(err, securityQuestion) {
+            // on error
+            if (err) {
+                console.log(err);
+                const createSecurityQuestionMongodbErrorResponse =  new ErrorResponse(500, 'Internal Server Error', err);
+                res.status(500).send(createSecurityQuestionMongodbErrorResponse.toObject());
+            // create question if valid
+            } else {  
+                console.log(securityQuestion);
+                const createSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', securityQuestion);
+                res.json(createSecurityQuestionResponse.toObject());
+            }
+        })
     }
     // catch error
     catch(e) {
-      console.log(e);
-      const createSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
-      res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
+        console.log(e);
+        const createSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+        res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
     }
-  });
+});
 
 
 /**
