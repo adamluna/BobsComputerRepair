@@ -36,6 +36,7 @@ th, td {
 /* Global custom classes */
 .hp-background {
     background-color: #fdda38;
+    padding-bottom: -2rem;
 }
 
 .hp-background-2 {
@@ -66,4 +67,17 @@ th, td {
     max-width: 750px; 
     min-width: 400px;
     margin: 0 auto;
+}
+
+/* Footer styling */
+.signin-footer-container {
+    margin: auto;
+    white-space: nowrap;
+}
+
+.signin-footer-container a {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #878787;
 }
