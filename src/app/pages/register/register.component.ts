@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
   securityQuestionsForm: FormGroup;
   credentialsForm: FormGroup;
 
-  errorMessages: Message;
+  errorMessages: Message[];
 
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private cookieService: CookieService, private securityQuestionsService: SecurityQuestionService) {
     this.securityQuestionsService.findAllSecurityQuestions().subscribe(res => {
