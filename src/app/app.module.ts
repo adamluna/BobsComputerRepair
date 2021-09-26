@@ -46,6 +46,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/verify-security-questions-form/verify-security-questions-form.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -88,7 +90,9 @@ import {MessageModule} from 'primeng/message';
     MatDividerModule,
     MatMenuModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    MatStepperModule,
+    MatListModule
         
   ],
   providers: [
