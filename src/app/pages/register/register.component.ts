@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
 
     this.credentialsForm = this.fb.group({
       userName: [null, Validators.compose([Validators.required])],
-      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(A-Za-z\\d]{8,}$')])],
+      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
     });
   }
 
@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
       userName: credentials.userName,
       password: credentials.password,
       firstName: contactInformation.firstName,
-      lasstName: contactInformation.lastName,
+      lastName: contactInformation.lastName,
       phoneNumber: contactInformation.phoneNumber,
       address: contactInformation.address,
       email: contactInformation.email,

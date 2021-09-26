@@ -18,6 +18,9 @@ const BaseResponse = require('../services/base-response');
 // configurations
 const router = express.Router();
 
+// default salt rounds
+const saltRounds = 10;
+
 /**
  * Sign in API
  */
