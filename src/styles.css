@@ -33,6 +33,11 @@ th, td {
     padding: 0 5px !important;
 }
 
+.mat-step-icon-selected {
+    background-color: #fdda38 !important;
+    color: #2f2f2d !important;
+}
+
 /* Global custom classes */
 .hp-background {
     background-color: #fdda38;
