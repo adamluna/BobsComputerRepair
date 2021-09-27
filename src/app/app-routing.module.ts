@@ -24,6 +24,7 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { AboutComponent } from "./pages/about/about.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { VerifyUsernameFormComponent } from "./shared/verify-username-form/verify-username-form.component";
+import { VerifySecurityQuestionsFormComponent } from "./shared/verify-security-questions-form/verify-security-questions-form.component";
 
 const routes: Routes = [
   {
@@ -85,11 +86,10 @@ const routes: Routes = [
         path: 'forgot',
         component: VerifyUsernameFormComponent
       },
-      /*
       {
         path: 'verify-security-questions',
         component: VerifySecurityQuestionsFormComponent
-      },
+      }, /*
       {
         path: 'reset-password',
         component: ResetPasswordFormComponent
