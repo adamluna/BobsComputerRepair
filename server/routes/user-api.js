@@ -98,37 +98,39 @@ router.get("/:id", async (req, res) => {
  */
 router.post("/", async (req, res) => {
   try {
+    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+
+    standardRole = {
+      role: "standard",
+    };
+
+    // user object
+    let newUser = {
+      userName: req.body.userName,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      email: req.body.email,
+      role: standardRole,
+    };
+
+    // Use findOne to check if user exists
     User.findOne({ username: req.body.userName }, (err, user) => {
       if (err) {
         console.log(err);
         const createUserMongoDbErrorResponse = new ErrorResponse(
           "500",
-          "MongoDB server error",
+          "Internal server error",
           err
         );
-        res.status(501).send(createUserMongoDbErrorResponse.toObject());
+        res.status(500).send(createUserMongoDbErrorResponse.toObject());
       } else {
         if (user) {
-          console.log(user);
-
-          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-
-          standardRole = {
-            role: "standard",
-          };
-
-          // user object
-          let newUser = {
-            userName: req.body.userName,
-            password: hashedPassword,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
-            email: req.body.email,
-            role: standardRole,
-          };
-
+          const createUserExistsErrorResponse = new ErrorResponse("400", "User already exists", user);
+          res.status(400).send(createUserExistsErrorResponse.toObject());
+        } else {
           // create user
           User.create(newUser, function (err, user) {
             if (err) {
@@ -149,17 +151,9 @@ router.post("/", async (req, res) => {
               res.json(createUserResponse.toObject());
             }
           });
-        } else {
-          console.log(`Username ${req.body.userName} already exists.`);
-          const userInUseError = new BaseResponse(
-            "400",
-            `The username '${req.body.userName}' is already in use.`,
-            null
-          );
-          res.status(400).send(userInUseError.toObject());
         }
       }
-    })
+    });
   } catch (e) {
     console.log(e);
     const createUserCatchErrorResponse = new ErrorResponse(
