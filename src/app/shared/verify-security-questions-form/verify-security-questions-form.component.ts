@@ -73,7 +73,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
       questionText3: this.question3,
       answerText1: answerToSecurityQuestion1,
       answerText2: answerToSecurityQuestion2,
-      answerText3: answerToSecurityQuestion3,
+      answerText3: answerToSecurityQuestion3
     }).subscribe(res => {
       console.log(res);
       if (res['message'] === 'success'){      

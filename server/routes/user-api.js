@@ -283,9 +283,9 @@ router.delete("/:id", async (req, res) => {
 /**
  * FindSelectedSecurityQuestions
  */
-router.get("/:userName/security-question", async (req, res) => {
+router.get("/:userName/security-questions", async(req, res) => {
   try {
-    user.findOne({ userName: req.params.userName }, function (err, user) {
+    User.findOne({ userName: req.params.userName }, function(err, user) {
       if (err) {
         console.log(err);
         const findSelectedSecurityQuestionsMongodbErrorResponse =
