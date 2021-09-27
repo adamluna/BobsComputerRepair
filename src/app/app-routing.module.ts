@@ -25,6 +25,7 @@ import { AboutComponent } from "./pages/about/about.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { VerifyUsernameFormComponent } from "./shared/verify-username-form/verify-username-form.component";
 import { VerifySecurityQuestionsFormComponent } from "./shared/verify-security-questions-form/verify-security-questions-form.component";
+import { ResetPasswordFormComponent } from "./shared/reset-password-form/reset-password-form.component";
 
 const routes: Routes = [
   {
@@ -89,11 +90,11 @@ const routes: Routes = [
       {
         path: 'verify-security-questions',
         component: VerifySecurityQuestionsFormComponent
-      }, /*
+      },
       {
         path: 'reset-password',
         component: ResetPasswordFormComponent
-      },*/
+      },
       /* 404 and 500 page. All invalid paths redirect to 404 */
       {
         path: "404",
