@@ -23,6 +23,7 @@ import { ErrorComponent } from "./pages/error/error.component";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { AboutComponent } from "./pages/about/about.component";
 import { RegisterComponent } from "./pages/register/register.component";
+import { VerifyUsernameFormComponent } from "./shared/verify-username-form/verify-username-form.component";
 
 const routes: Routes = [
   {
@@ -80,11 +81,11 @@ const routes: Routes = [
         path: "register",
         component: RegisterComponent,
       },
-      /*
       {
         path: 'forgot',
         component: VerifyUsernameFormComponent
       },
+      /*
       {
         path: 'verify-security-questions',
         component: VerifySecurityQuestionsFormComponent
