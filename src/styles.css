@@ -54,6 +54,13 @@ th, td {
     color: #fff;
 }
 
+.bcrs-title {
+    text-align: center; 
+    padding-left: 10%; 
+    margin-bottom: 15px;
+    text-shadow: 0.05em 0.05em 0.05em grey;
+}
+
 .hp-card {
     width: 75%; 
     max-width: 1000px; 

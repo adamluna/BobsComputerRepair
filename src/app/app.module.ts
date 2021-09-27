@@ -49,6 +49,7 @@ import {MessageModule} from 'primeng/message';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatListModule} from '@angular/material/list';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
+import { VerifyUsernameFormComponent } from './shared/verify-username-form/verify-username-form.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-p
     ContactComponent,
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
+    VerifyUsernameFormComponent
   ],
   imports: [
     BrowserModule,
