@@ -7,22 +7,25 @@
 ; Description: Register component HTML file
 ;===========================================
 -->
-<mat-toolbar color="primary">
+<mat-toolbar class="hp-background">
     <mat-toolbar-row></mat-toolbar-row>
     <mat-toolbar-row>
-        <div class="layout-header-container">
-            <p class="layout-header-text">Bob's Computer Repair Shop<br/>
-            <mat-icon>build</mat-icon></p>
+        <div style="width: 90%;">
+            <p id="bcrs" class="hp-secondary">Bob's Computer Repair Shop<br/>
+            <mat-icon style="margin: 5px;">build</mat-icon></p>
         </div>
     </mat-toolbar-row>
     <mat-toolbar-row></mat-toolbar-row>
     <mat-toolbar-row></mat-toolbar-row>
 </mat-toolbar>
 
-<div fxLayout="column">
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex.gt-sm="55" fxFlex="100">
     <br/><br/>
-    <mat-card fxFlex class="card-container mat-elevation-z4">
-        <mat-card-title class="card-title">Account Registration</mat-card-title>
+    <mat-card class="card-container mat-elevation-z4">
+        <mat-card-title style="text-align: center; font-size: 48px; font-weight: lighter;"
+        class="mat-headline">Account Registration</mat-card-title>
+        <br />
 
         <mat-card-content fxLayout="column" fxLayoutGap="10px">
             <mat-horizontal-stepper #stepper linear>
@@ -87,7 +90,7 @@
 
                         <br />
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button color="accent" matStepperNext>Next</button>
+                            <button mat-raised-button class="hp-background hp-secondary" matStepperNext>Next</button>
                         </div>
                     </form>
                 </mat-step>
@@ -175,8 +178,52 @@
 
                         <br />
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp;
-                            <button mat-raised-button (click)="register()" [disabled]="!credentialsForm.valid" color="accent">Register</button>
+                            <button mat-raised-button color="basic" matStepperPrevious>Back</button> &nbsp;
+                            <button mat-raised-button class="hp-background hp-secondary" matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="credentialsForm" errorMessage="Credentials is required">
+                    <form [formGroup]="credentialsForm">
+                        <ng-template matStepLabel>Credentials</ng-template>
+
+                        <br />
+
+                        <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+                        <div class="register-credentials-container">
+                            <mat-list>
+                                <mat-list-item>
+                                <mat-form-field fxFlex appearence="fill">
+                                    <mat-label>Username</mat-label>
+                                    <input matInput [formControl]="credentialsForm.controls['userName']" />
+                                </mat-form-field>
+                            </mat-list-item>
+                            
+                            <br /><br />
+
+                            <mat-list-item>
+                                <mat-form-field fxFlex appearence="fill">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" matInput [formControl]="credentialsForm.controls['password']" />
+
+                                    <mat-error class="error" *ngIf="credentialsForm.controls['password'].hasError('required') && credentialsForm.controls['password'].touched">
+                                        Password is a required field.
+                                    </mat-error>
+
+                                    <mat-error class="error" *ngIf="credentialsForm.controls.password.hasError('pattern') && credentialsForm.controls.password.touched">
+                                        Password must be at least 8 characters, contain one letter, and one number.
+                                    </mat-error>
+                                </mat-form-field>
+                            </mat-list-item>
+                        </mat-list>
+
+                        <br />
+                        <div fxLayoutAlign="end">
+                            <button mat-raised-button color="basic" matStepperPrevious>Back</button> &nbsp;&nbsp;
+                            <button mat-raised-button (click)="register()" [disabled]="!credentialsForm.valid" class="hp-background hp-secondary">Register</button>
+                        </div>
                         </div>
                     </form>
                 </mat-step>
@@ -188,4 +235,5 @@
 
         </mat-card-content>
     </mat-card>
+    </div>
 </div>
