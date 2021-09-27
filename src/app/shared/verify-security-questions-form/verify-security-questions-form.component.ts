@@ -12,9 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Message } from 'primeng/api/message';
 
-
-
-
 @Component({
   selector: 'app-verify-security-questions-form',
   templateUrl: './verify-security-questions-form.component.html',

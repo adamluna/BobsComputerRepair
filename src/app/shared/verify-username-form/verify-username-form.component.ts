@@ -22,7 +22,7 @@ export class VerifyUsernameFormComponent implements OnInit {
 
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit()  {
     this.form = this.fb.group({
       username: [null, Validators.compose([Validators.required])]
     });
@@ -43,6 +43,6 @@ export class VerifyUsernameFormComponent implements OnInit {
         {severity: 'error', summary: 'Error', detail: err['message']}
       ]
       console.log(err);
-    })
+    });
   }
 }

@@ -92,14 +92,26 @@ router.post("/signin", async (req, res) => {
 /**
  * registerUser
  */
-router.post("/register", async (req, res) => {
-  try {
-    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-
-    standardRole = {
-      role: "standard",
-    };
-
+router.post('/register', async(req, res) => {
+  try 
+  {
+    User.findOne({'userName': req.body.userName}, function(err,user)
+    {
+      if (err)
+      {
+        console.log(err);
+        const registerUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(registerUserMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        if (!user)
+        {
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+          standardRole = {
+            role: "standard",
+          }
+          
     // user object
     let registeredUser = {
       userName: req.body.userName,
@@ -113,51 +125,33 @@ router.post("/register", async (req, res) => {
       selectedSecurityQuestions: req.body.selectedSecurityQuestions,
     };
 
-    // Use findOne to check if user exists
-    User.findOne({ userName: req.body.userName }, (err, user) => {
-      if (err) {
+    User.create(registeredUser, function(err, newUser)
+    {
+      if (err)
+      {
         console.log(err);
-        const registerUserMongoDbErrorResponse = new ErrorResponse(
-          "500",
-          "Internal server error",
-          err
-        );
-        res.status(500).send(registerUserMongoDbErrorResponse.toObject());
-      } else {
-        if (user) {
-          const registerUserExistsErrorResponse = new ErrorResponse("400", "User alredy exists", user);
-          res.status(400).send(registerUserExistsErrorResponse.toObject());
-        } else {
-          // create user
-          User.create(registeredUser, function (err, user) {
-            if (err) {
-              console.log(err);
-              const registerUserMongoDbErrorResponse = new ErrorResponse(
-                500,
-                "Internal server error",
-                err
-              );
-              res.status(500).send(registerUserMongoDbErrorResponse.toObject());
-            } else {
-              console.log(user);
-              const registerUserResponse = new BaseResponse(
-                200,
-                "Query successful",
-                user
-              );
-              res.json(registerUserResponse.toObject());
-            }
-          });
-        }
+        const newUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(newUserMongodbErrorResponse.toObject());
       }
-    });
-  } catch (e) {
+      else
+      {
+        console.log(newUser);
+        const registeredUserResponse = new BaseResponse('200', 'Query successful', newUser);
+        res.json(registeredUserResponse.toObject());
+      }
+    })
+  }
+  else
+  {
+    console.log(`Username ${req.body.userName} already exists.`);
+    const userInUseError = new BaseResponse('400', `The username '${req.body.userName}' is already in use.`, null);
+    res.status(400).send(userInUseError.toObject());
+      }
+    }
+  })
+}     catch (e) {
     console.log(e);
-    const registerUserCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal server error",
-      e.message
-    );
+    const registerUserCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
     res.status(500).send(registerUserCatchErrorResponse.toObject());
   }
 });
@@ -165,123 +159,80 @@ router.post("/register", async (req, res) => {
 /**
  * verifyUser
  */
-router.get("/userName", async (req, res) => {
+router.get('/verify/users/:userName', async (req, res) => {
   try {
-    User.findOne({ userName: req.params.userName }, function (err, user) {
+    User.findOne({ 'userName': req.params.userName }, function (err, user) {
       // on error
-      if (err) {
-        console.log(err);
-        const verifyUserMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        return res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+      if (user) {
+        if (err)
+        {
+          console.log(err);
+          const verifyUserMongodbErrorResponse = new ErrorResponse('500', "Internal server error", err );
+          res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+        }    
+       else {
+         console.log(user);
+         const verifyUserResponse = new BaseResponse('200', 'Query successful', user);
+         res.json(verifyUserResponse.toObject());
+       }
       } else {
-        // user not found
-        if (!user) {
-          const invalidUsernameResponse = new BaseResponse(
-            400,
-            "Invalid username",
-            req.params.userName
-          );
-          return res.status(400).send(invalidUsernameResponse.toObject());
-          // user found
-        } else {
-          console.log(user);
-          const userVerifiedResponse = new BaseResponse(
-            200,
-            "User verified",
-            user
-          );
-          return res.status(200).send(userVerifiedResponse.toObject());
-        }
-      }
-    });
+             const invalidUsernameResponse = new BaseResponse('400,', "Invalid username", req.params.userName);
+           res.status(400).send(invalidUsernameResponse.toObject());
+            }
+            })
+    }
     // catch error
-  } catch (e) {
-    console.log(e.message);
-    const verifyUserCatchResponse = new ErrorResponse(
-      500,
-      "Internal server error",
-      e.message
-    );
-    return res.status(500).send(verifyUserCatchResponse.toObject());
+   catch (e) {
+    console.log(e);
+    const verifyUserCatchErrorResponse = new ErrorResponse('500',"Internal server error", e.message);
+    res.status(500).send(verifyUserCatchErrorResponse.toObject());
   }
 });
 
 /**
  * verifySecurityQuestions
  */
-router.post("/verify/users/:userName/security-questions", async (req, res) => {
-  try {
-    User.findOne({ userName: req.params.userName }, function (err, user) {
+router.post('/verify/users/:userName/security-questions', async(req, res) => {
+  try 
+  {
+    User.findOne({'userName': req.params.userName}, function (err, user) 
+    {
       // on error
       if (err) {
         console.log(err);
-        const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res
-          .status(500)
-          .send(verifySecurityQuestionsMongodbErrorResponse.toObject());
+        const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse('500','Internal server error', err);
+        res.status(500).send(verifySecurityQuestionsMongodbErrorResponse.toObject());
         // on success
       } else {
         console.log(user);
-        const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(
-          (q) => q.questionText === req.body.questionText1
-        );
-        const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(
-          (q2) => q2.questionText === req.body.questionText2
-        );
-        const selectedSecurityQuestionThree =
-          user.selectedSecurityQuestions.find(
-            (q3) => q3.questionText === req.body.questionText3
-          );
+        const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText1);
+        const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
+        const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText3);
 
         // validate matching answers
-        const isValidAnswerOne =
-          selectedSecurityQuestionOne.answerText === req.body.answerText1;
-        const isValidAnswerTwo =
-          selectedSecurityQuestionTwo.answerText === req.body.answerText2;
-        const isValidAnswerThree =
-          selectedSecurityQuestionThree.answerText === req.body.answerText3;
+        const isValidAnswerOne = selectedSecurityQuestionOne.answerText === req.body.answerText1;
+        const isValidAnswerTwo = selectedSecurityQuestionTwo.answerText === req.body.answerText2;
+        const isValidAnswerThree = selectedSecurityQuestionThree.answerText === req.body.answerText3;
 
         // if all answers match
         if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
-          console.log(
-            `User ${user.userName} answered their security questions correctly`
-          );
-          const validSecurityQuestionsResponse = new BaseResponse(
-            200,
-            "Success",
-            user
-          );
+          console.log(`User ${user.userName} answered their security questions correctly`);
+          const validSecurityQuestionsResponse = new BaseResponse('200', 'Success', user);
           res.json(validSecurityQuestionsResponse.toObject());
           // if answers are incorrect
         } else {
-          console.log(
-            `User ${user.userName} did not answer their security questions correctly`
-          );
-          const invalidSecurityQuestionsResponse = new BaseResponse(
-            200,
-            "Error: incorrect answers",
-            user
-          );
+          console.log(`User ${user.userName} did not answer their security questions correctly`);
+          const invalidSecurityQuestionsResponse = new BaseResponse('200', 'Error: incorrect answers', user);
           res.json(invalidSecurityQuestionsResponse.toObject());
         }
       }
-    });
+    })
     // catch error
-  } catch (e) {
+  } 
+  catch (e) 
+  {
     console.log(e);
-    const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal server error",
-      e.message
-    );
+    const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
     res.status(500).send(verifySecurityQuestionsCatchErrorResponse.toObject());
   }
 });
