@@ -165,7 +165,7 @@ router.post("/register", async (req, res) => {
 /**
  * verifyUser
  */
-router.get("/verify/users/:userName", async (req, res) => {
+router.get("/userName", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
       // on error
