@@ -12,7 +12,8 @@
     <mat-toolbar-row>
         <div style="width: 90%;">
             <p class="bcrs-title hp-secondary">Bob's Computer Repair Shop<br/>
-            <mat-icon style="margin: 5px;">build</mat-icon></p>
+                <img class="header-logo" src="./assets/bcrs-logo.png" alt="BCRS Logo">
+            </p>
         </div>
     </mat-toolbar-row>
     <mat-toolbar-row></mat-toolbar-row>
@@ -89,7 +90,7 @@
 
                         <br />
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button class="hp-background hp-secondary" matStepperNext>Next</button>
+                            <button mat-raised-button class="hp-background" matStepperNext>Next</button>
                         </div>
                     </form>
                 </mat-step>
@@ -177,8 +178,8 @@
 
                         <br />
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button color="basic" matStepperPrevious>Back</button> &nbsp;
-                            <button mat-raised-button class="hp-background hp-secondary" matStepperNext>Next</button>
+                            <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;
+                            <button mat-raised-button class="hp-background" matStepperNext>Next</button>
                         </div>
                     </form>
                 </mat-step>
@@ -220,8 +221,8 @@
 
                         <br />
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button color="basic" matStepperPrevious>Back</button> &nbsp;&nbsp;
-                            <button mat-raised-button (click)="register()" [disabled]="!credentialsForm.valid" class="hp-background hp-secondary">Register</button>
+                            <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp;
+                            <button mat-raised-button (click)="register()" [disabled]="!credentialsForm.valid" class="hp-background">Register</button>
                         </div>
                         </div>
                     </form>

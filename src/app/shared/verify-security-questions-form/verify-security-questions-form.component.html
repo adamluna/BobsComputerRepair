@@ -5,13 +5,12 @@
         <div style="width: 90%;">
             <p class="bcrs-title hp-secondary">
                 Bob's Computer Repair Shop <br />
-                <mat-icon style="margin: 5px">build</mat-icon>
+                <img class="header-logo" src="./assets/bcrs-logo.png" alt="BCRS Logo">
                 </p>
         </div>
     
 
     </mat-toolbar-row>
-    <mat-toolbar-row></mat-toolbar-row>
     <mat-toolbar-row></mat-toolbar-row>
 </mat-toolbar>
 
@@ -58,9 +57,9 @@
                     </mat-form-field>
 
                     <br/><br/>
-                    <div fxFlex fxLayoutAlign="end" class="p5">
-                        <button mat-raised-button routerLink="/session/signin" color="accent">Cancel</button> &nbsp;&nbsp;
-                        <button mat-raised-button [disabled]="!form.valid" color="accent">Verify Security Questions</button>
+                    <div fxFlex fxLayoutAlign="end">
+                        <button mat-raised-button routerLink="/session/signin" color="warn">Cancel</button> &nbsp;&nbsp;
+                        <button mat-raised-button [disabled]="!form.valid" class="hp-background">Verify Security Questions</button>
                     </div>
 
                 </mat-card-content>
