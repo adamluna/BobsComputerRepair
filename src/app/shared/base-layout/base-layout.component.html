@@ -6,10 +6,11 @@
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <button class="logo-text" routerLink="/" mat-button><img id="logo" src="./assets/bcrs-logo.png" alt="BCRS Logo"> BCRS</button>
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <button class="navbar-link" routerLink="/about" mat-button>About</button>
+        <button class="navbar-link" routerLink="/contact" mat-button>Contact Us</button>
       </div>
       <div fxFlex></div>
         
@@ -60,7 +61,7 @@
           &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="hp-primary bu-link" target="_blank">Bellevue University</a> - <a href="https://github.com/adamluna/BobsComputerRepair" class="hp-primary bu-link" target="_blank">Team Hufflepuff</a> 
         </p>
         <div style="margin-left: auto">
-          <a href="https://github.com/adamluna/BobsComputerRepair" class="hp-primary bu-link" target="_blank"><img class="crest" alt="Hufflepuff Crest - source: https://cdn.shopify.com/s/files/1/1325/3287/products/HP8038C_2000x.png?v=1546230458" src="./assets/hufflepuff-crest.png"></a>
+          <a href="https://github.com/adamluna/BobsComputerRepair/blob/dev/src/assets/img-attribution.txt" class="hp-primary bu-link" target="_blank"><img class="crest" alt="Hufflepuff Crest - source: https://cdn.shopify.com/s/files/1/1325/3287/products/HP8038C_2000x.png?v=1546230458" src="./assets/hufflepuff-crest.png"></a>
         </div>
       </mat-toolbar>
     </footer>

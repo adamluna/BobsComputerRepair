@@ -1,0 +1,20 @@
+h1{
+    padding-top: 5%;
+}
+
+img{
+    width: 350px;
+    display: block;
+    padding-left: 5%;
+}
+.about{
+    margin: auto;
+    width: 70%;
+    
+}
+.paragraph{
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-justify: auto;
+}

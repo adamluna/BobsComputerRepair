@@ -5,10 +5,22 @@
  * Description: The base-layout CSS file.
  */
 
-.logo {
+ #logo {
+  position: relative;
+  width: 60px;
+  height: auto;
+  bottom: 3px;
+  padding-top: 3px;
+}
+
+.logo-text {
   margin-left: 75px;
   font-size: 24px;
   font-weight: lighter;;
+}
+
+nav, mat-toolbar {
+  width: 100%;
 }
 
 .navbar-container {
@@ -25,12 +37,12 @@ mat-toolbar {
 }
 
 .main-content {
-  padding-left: 30px;
+  margin: 30px 0 100px 0;
 }
 
 .footer {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 

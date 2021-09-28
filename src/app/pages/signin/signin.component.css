@@ -6,20 +6,28 @@
  * Description: Sign in CSS file.
  */
 
-#bcrs {
-    text-align: center; 
-    padding-left: 10%; 
-    margin-bottom: 15px;
-    text-shadow: 0.05em 0.05em 0.05em grey;
-    
-}
-
 mat-card {
     position: relative;
-    bottom: 100px;
 }
 
 #signin-btn {
     max-width: 500px;
     margin: 0 auto;
+}
+
+/* Footer styling */
+.signin-footer-container {
+    margin: auto;
+    white-space: nowrap;
+}
+
+.signin-footer-container a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #878787;
+}
+
+.signin-footer-container a:hover {
+    color: #2f2f2D;
+    text-decoration: underline;
 }

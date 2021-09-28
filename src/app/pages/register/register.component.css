@@ -1,0 +1,23 @@
+/**
+ * Title: BCRS - Register styles
+ * Author: Prof. Richard Krasso
+ * Modified By: Mark Watson
+ * Date: 26 Sept 2021
+ * Description: Register CSS file.
+ */
+
+mat-card {
+    position: relative;
+}
+
+.register-footer-link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #878787;
+}
+
+.register-footer-link:hover {
+    color: #2f2f2d;
+    text-decoration: underline;
+}
+

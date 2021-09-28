@@ -1,0 +1,10 @@
+/**
+ * Date: 23 September 2021
+ * Title: BCRS - Security Question List Styles
+ * Author: Mark Watson
+ * Description: Security question list CSS file.
+ */
+
+th, td {
+    width: 33%;
+}
