@@ -1,3 +1,11 @@
+/**
+ * Title: about.component.ts
+ * Author: Professor Krasso
+ * Modified By: Eunice Lim
+ * Date: 30 Sept 2021
+ * Description: About.component.ts
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

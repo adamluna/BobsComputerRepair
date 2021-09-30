@@ -1,3 +1,11 @@
+
+/**
+ * Title: not-found.component.ts
+ * Author: Professor Krasso
+ * Modified By: Eunice Lim
+ * Date: 30 Sept 2021
+ * Description: Not-found.component.ts
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

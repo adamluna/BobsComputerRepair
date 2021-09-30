@@ -23,7 +23,7 @@
 
             <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-            <form [formGroup]="form" (ngSubmit)="validateUsername()" #usernameForm>
+            <form [formGroup]="form" (ngSubmit)="validateUsername()" #usernameForm (keydown.enter)="$event.preventDefault()">
                 <mat-card-content fxLayout="column">
                     <mat-form-field fxFlex appearance="fill">
                         <mat-label>Username <span class="required">*</span></mat-label>
