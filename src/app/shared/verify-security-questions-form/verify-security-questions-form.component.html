@@ -26,12 +26,12 @@
 
             <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-            <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #usernameForm>
+            <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #usernameForm (keydown.enter)="$event.preventDefault()">
                 <mat-card-content fxLayout="column">
 
                     <mat-form-field fxFlex appearance="fill">
                         <mat-label>{{ question1 }} <span class="required">*</span></mat-label>
-                        <input matInput [formControl]="form.controls['answerToSecurityQuestion1']"/>
+                        <input matInput [formControl]="form.controls['answerToSecurityQuestion1']" (keydown.enter)="verifySecurityQuestions()"/>
 
                         <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion1'].hasError('required') && form.controls['answerToSecurityQuestion1'].touched">
                             Required field.
@@ -40,7 +40,7 @@
 
                     <mat-form-field fxFlex appearance="fill">
                         <mat-label>{{ question2 }} <span class="required">*</span></mat-label>
-                        <input matInput [formControl]="form.controls['answerToSecurityQuestion2']"/>
+                        <input matInput [formControl]="form.controls['answerToSecurityQuestion2']" (keydown.enter)="verifySecurityQuestions()"/>
 
                         <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion2'].hasError('required') && form.controls['answerToSecurityQuestion2'].touched">
                             Required field.
@@ -49,7 +49,7 @@
 
                     <mat-form-field fxFlex appearance="fill">
                         <mat-label>{{ question3 }} <span class="required">*</span></mat-label>
-                        <input matInput [formControl]="form.controls['answerToSecurityQuestion3']"/>
+                        <input matInput [formControl]="form.controls['answerToSecurityQuestion3']" (keydown.enter)="verifySecurityQuestions()"/>
 
                         <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion3'].hasError('required') && form.controls['answerToSecurityQuestion3'].touched">
                             Required field.

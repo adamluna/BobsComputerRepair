@@ -24,7 +24,7 @@ export class DeleteRecordDialogComponent implements OnInit {
     this.dialogBody = data.dialogBody; 
    }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

@@ -23,11 +23,11 @@
 
             <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-            <form [formGroup]="form" (ngSubmit)="validateUsername()" #usernameForm (keydown.enter)="$event.preventDefault()">
+            <form [formGroup]="form" (ngSubmit)="validateUsername()" #usernameForm>
                 <mat-card-content fxLayout="column">
                     <mat-form-field fxFlex appearance="fill">
                         <mat-label>Username <span class="required">*</span></mat-label>
-                        <input matInput [formControl]="form.controls['username']" />
+                        <input matInput [formControl]="form.controls['username']" (keydown.enter)="validateUsername()" />
                         <mat-error class="error" *ngIf="form.controls['username'].hasError('required') && form.controls['username'].touched">
                             Username is a required field.
                         </mat-error>
