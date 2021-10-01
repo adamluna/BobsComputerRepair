@@ -51,6 +51,8 @@ import { MatListModule } from '@angular/material/list';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { VerifyUsernameFormComponent } from './shared/verify-username-form/verify-username-form.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { VerifyUsernameFormComponent } from './shared/verify-username-form/verif
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
     ResetPasswordFormComponent,
-    VerifyUsernameFormComponent
+    VerifyUsernameFormComponent,
+    RoleListComponent,
+    InvoiceSummaryDialogComponent
   ],
   imports: [
     BrowserModule,
