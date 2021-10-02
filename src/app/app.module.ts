@@ -53,6 +53,7 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { VerifyUsernameFormComponent } from './shared/verify-username-form/verify-username-form.component';
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/i
     ResetPasswordFormComponent,
     VerifyUsernameFormComponent,
     RoleListComponent,
-    InvoiceSummaryDialogComponent
+    InvoiceSummaryDialogComponent,
+    RoleCreateComponent
   ],
   imports: [
     BrowserModule,
