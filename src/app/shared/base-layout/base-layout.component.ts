@@ -9,6 +9,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { Role } from '../role.interface';
+import { RoleService } from '../role.service';
 
 @Component({
   selector: 'app-base-layout',
@@ -18,24 +20,19 @@ import { Router } from '@angular/router';
 export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
-  isLoggedIn: boolean;
-  name: string;
+  userRole: Role;
 
-  constructor(private cookieService: CookieService, private router: Router) {
-    this.isLoggedIn = this.cookieService.get('session_user') ? true : false; //cookie that is trying to bring back
-
-    this.name = sessionStorage.getItem('name'); //to store signed in name
-    console.log('Signed in as user ' + this.name);
+  constructor(private cookieService: CookieService, private router: Router, private roleService: RoleService) {
+    this.roleService.findUserRole(this.cookieService.get('session_user')).subscribe(res => {
+      this.userRole = res['data'];
+    })
   }
 
   ngOnInit(): void {
   }
 
-  signOut()
-  {
+  signOut() {
     this.cookieService.deleteAll();
     this.router.navigate(['/session/signin']);
-
   }
-
 }
