@@ -1,5 +1,19 @@
+<!--
+============================================
+; Title:  invoice-summary-dialog.component.html
+; Author: Professor Krasso
+; Modified by: Eunice Lim
+; Date: 01 October 2021
+; Description: invoice-summary-dialog component HTML file
+;===========================================
+-->
 <div fxLayout="column">
     <mat-card class="mat-elevation-z0">
+        <div style="text-align: right;">
+        <button mat-icon-button matDialogClose="cancel">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
         <mat-card-title mat-dialog-title style="text-align: center;">
         {{ username }} please confirm your order
         </mat-card-title>
