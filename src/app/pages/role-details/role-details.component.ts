@@ -40,6 +40,33 @@ export class RoleDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      text: [null, Validators.compose([Validators.required])],
+    });
   }
 
+  /**
+   * Save updated role
+   */
+  save() {
+    // get the new role from the form
+    const updatedRole = {
+      text: this.form.controls['text'].value,
+    } as Role;
+
+    // update the role
+    this.roleService.updateRole(this.roleId, updatedRole).subscribe(res => {
+        this.router.navigate(['/roles']);
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+
+  /**
+   * Cancel and go back to role list
+   */
+  cancel() {
+    this.router.navigate(['/roles']);
+  }
 }
