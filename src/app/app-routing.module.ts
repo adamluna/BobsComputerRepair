@@ -30,7 +30,7 @@ import { PurchasesByServiceGraphComponent } from "./pages/purchases-by-service-g
 import { RoleCreateComponent } from "./pages/role-create/role-create.component";
 import { RoleListComponent } from "./pages/role-list/role-list.component";
 import { RoleGuard } from "./shared/role.guard";
-// import { RoleDetailsComponent } from ""./pages/role-details/role-details.component";
+import { RoleDetailsComponent } from "./pages/role-details/role-details.component";
 
 const routes: Routes = [
   {
@@ -85,11 +85,11 @@ const routes: Routes = [
       {
         path: "roles/create/new",
         component: RoleCreateComponent
-      }, /*
+      },
       {
         path: "roles/:roleid",
         component: RoleDetailsComponent
-      } */
+      }
     ],
     canActivate: [AuthGuard],
   },
