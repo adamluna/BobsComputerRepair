@@ -58,6 +58,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { ChartModule } from 'primeng/chart';
     RoleListComponent,
     InvoiceSummaryDialogComponent,
     RoleCreateComponent,
-    PurchasesByServiceGraphComponent
+    PurchasesByServiceGraphComponent,
+    RoleDetailsComponent
   ],
   imports: [
     BrowserModule,
