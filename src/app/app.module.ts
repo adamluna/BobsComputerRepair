@@ -54,6 +54,7 @@ import { VerifyUsernameFormComponent } from './shared/verify-username-form/verif
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     VerifyUsernameFormComponent,
     RoleListComponent,
     InvoiceSummaryDialogComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
+    PurchasesByServiceGraphComponent
   ],
   imports: [
     BrowserModule,
