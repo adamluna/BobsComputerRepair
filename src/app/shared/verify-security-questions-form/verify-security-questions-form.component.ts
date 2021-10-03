@@ -37,6 +37,10 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
       console.log(res);
     }, err => {
       console.log(err);
+      // this.errorMessage = 'Unable to verify security questions, please try again.';
+      this.errorMessages = [
+        {severity: 'error', summary: 'Error', detail: err.message}
+      ]
     }, () => {
       this.question1 = this.selectedSecurityQuestions[0].questionText;
       this.question2 = this.selectedSecurityQuestions[1].questionText;
