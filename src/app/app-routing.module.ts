@@ -26,6 +26,7 @@ import { RegisterComponent } from "./pages/register/register.component";
 import { VerifyUsernameFormComponent } from "./shared/verify-username-form/verify-username-form.component";
 import { VerifySecurityQuestionsFormComponent } from "./shared/verify-security-questions-form/verify-security-questions-form.component";
 import { ResetPasswordFormComponent } from "./shared/reset-password-form/reset-password-form.component";
+import { PurchasesByServiceGraphComponent } from "./pages/purchases-by-service-graph/purchases-by-service-graph.component";
 
 const routes: Routes = [
   {
