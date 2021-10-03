@@ -5,7 +5,7 @@
  * Title: role.guard.ts
 */
 
-import { RoleService } from './services/role.service';
+import { RoleService } from './role.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
