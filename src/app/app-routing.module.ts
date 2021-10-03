@@ -27,6 +27,10 @@ import { VerifyUsernameFormComponent } from "./shared/verify-username-form/verif
 import { VerifySecurityQuestionsFormComponent } from "./shared/verify-security-questions-form/verify-security-questions-form.component";
 import { ResetPasswordFormComponent } from "./shared/reset-password-form/reset-password-form.component";
 import { PurchasesByServiceGraphComponent } from "./pages/purchases-by-service-graph/purchases-by-service-graph.component";
+import { RoleCreateComponent } from "./pages/role-create/role-create.component";
+import { RoleListComponent } from "./pages/role-list/role-list.component";
+import { RoleGuard } from "./shared/role.guard";
+// import { RoleDetailsComponent } from ""./pages/role-details/role-details.component";
 
 const routes: Routes = [
   {
@@ -36,6 +40,11 @@ const routes: Routes = [
       {
         path: "",
         component: HomeComponent,
+      },
+      {
+        path: "purchases-by-service-graph",
+        component: PurchasesByServiceGraphComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: "contact",
@@ -69,6 +78,18 @@ const routes: Routes = [
         path: "security-questions/create/new",
         component: SecurityQuestionCreateComponent,
       },
+      {
+        path: "roles",
+        component: RoleListComponent
+      },
+      {
+        path: "roles/create/new",
+        component: RoleCreateComponent
+      }, /*
+      {
+        path: "roles/:roleid",
+        component: RoleDetailsComponent
+      } */
     ],
     canActivate: [AuthGuard],
   },
