@@ -23,7 +23,8 @@ export class BaseLayoutComponent implements OnInit {
   userRole: Role;
 
   constructor(private cookieService: CookieService, private router: Router, private roleService: RoleService) {
-    this.roleService.findUserRole(this.cookieService.get('session_user')).subscribe(res => {
+    // gets user role to define access level
+    this.roleService.findUserRole(this.cookieService.get('sessionuser')).subscribe(res => {
       this.userRole = res['data'];
     })
   }
@@ -31,6 +32,7 @@ export class BaseLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // sign out user
   signOut() {
     this.cookieService.deleteAll();
     this.router.navigate(['/session/signin']);

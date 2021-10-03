@@ -10,7 +10,7 @@
 
 // require statements
 const mongoose = require('mongoose');
-const Shema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const roleSchema = new Schema ({
     text: { type: String, unique: true },

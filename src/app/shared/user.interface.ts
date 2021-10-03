@@ -18,4 +18,5 @@ export interface User {
     phoneNumber: string;
     address: string;
     email: string;
+    role: Object; // MIGHT NEED TO CHANGE THIS
 }

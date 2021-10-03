@@ -55,6 +55,9 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -106,8 +109,10 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     MessageModule,
     MatStepperModule,
     MatListModule,
-    MatSelectModule,      
-        
+    MatSelectModule,
+    MatCheckboxModule,
+    TableModule,    
+    ChartModule,
   ],
   providers: [
     {
