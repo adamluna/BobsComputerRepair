@@ -9,7 +9,7 @@
   </div>
 
   <div fxFlex>
-    <mat-card class="mat-elevated-z0 hp-card">
+    <mat-card class="mat-elevated-z0 hp-card-lg">
       <!-- products form -->
       <form #invoiceForm="ngForm" (submit)="generateInvoice();">
         <mat-card-content>
@@ -23,13 +23,27 @@
                 <mat-card-subtitle>
                   Services
                 </mat-card-subtitle>
-                <mat-card-content>
-                  <div *ngFor="let product of products">
-                    <mat-checkbox value="{{ product.price }}" [(ngModel)]="product.checked" [name]="product.title">
-                      {{ product.title }} ({{product.price | currency }})
-                    </mat-checkbox>
-                  </div>
-                </mat-card-content>
+
+                <div class="grid-container">
+                  <ng-container *ngFor="let product of products">
+                    <mat-card class="mat-elevation-z8">
+                      <!-- service title -->
+                      <mat-card-title>
+                        <mat-checkbox value="{{ product.price }}" [(ngModel)]="product.checked" [name]="product.title">
+                          {{ product.title }}
+                        </mat-checkbox>
+                      </mat-card-title>
+                      <br />
+              
+                      <!-- service price -->
+                      <mat-card-content>
+                        <mat-list>
+                          <mat-list-item>{{ product.price | currency }}</mat-list-item>
+                        </mat-list>
+                      </mat-card-content>
+                    </mat-card>
+                  </ng-container>
+                </div>
               </mat-card>
 
               <br />
@@ -39,18 +53,18 @@
 
             <!-- standard fees -->
             <div fxFlex>
-              <mat-card class="mat-elevation-z0">
+              <mat-card class="mat-elevation-z0 hp-card-sm">
                 <mat-card-subtitle>
                   Standard Fees
                 </mat-card-subtitle>
                 <mat-card-content>
                   <div fxLayout="column">
-                    <mat-form-field class="w-50" appearance="fill" fxFlex>
+                    <mat-form-field class="standard-fees" appearance="fill" fxFlex>
                       <mat-label>Parts</mat-label>
                       <input matInput [(ngModel)]="invoice.partsAmount" type="number" name="txtPartsAmount" />
                     </mat-form-field>
 
-                    <mat-form-field class="w-50" appearance="fill" fxFlex>
+                    <mat-form-field class="standard-fees" appearance="fill" fxFlex>
                       <mat-label>Labor @ 50/hr</mat-label>
                       <input matInput [(ngModel)]="invoice.laborHours" type="number" name="txtLaborHours" />
                     </mat-form-field>

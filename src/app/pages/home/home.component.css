@@ -6,13 +6,29 @@
  * Description: Home component CSS file.
  */
   
-  .title {
-    text-align: center;
-    font-weight: lighter;
-  }
-  
-  .subtitle {
-    text-align: center;
-    font-size: 14px;
-  }
-  
+.title {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: auto auto auto auto;
+  padding: 5px 20px;
+}
+
+mat-card-title mat-checkbox {
+  font-size: 18px !important;
+}
+
+.standard-fees {
+  width: 85%;
+  min-width: 250px;
+  margin: 0 auto;
+}

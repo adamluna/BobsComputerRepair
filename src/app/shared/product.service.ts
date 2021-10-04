@@ -59,6 +59,12 @@ export class ProductService {
         title: 'Disk Clean-up',
         price: 149.99,
         checked: false
+      },
+      {
+        id: 106,
+        title: 'Data Recovery',
+        price: 199.99,
+        checked: false
       }
     ]
   }

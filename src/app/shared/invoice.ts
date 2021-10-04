@@ -16,7 +16,7 @@ export class Invoice {
     private username: string;
     private lineItems: LineItem[]
     private orderDate: string;
-    private LABOR_DATE: number = 50;
+    private LABOR_RATE: number = 50;
 
     partsAmount: number;
     laborHours: number;
@@ -51,7 +51,7 @@ export class Invoice {
     }
 
     getLaborAmount(): number {
-        return Number(this.laborHours) + Number(this.LABOR_DATE);
+        return Number(this.laborHours) * Number(this.LABOR_RATE);
     }
 
     getOrderDate(): string {
