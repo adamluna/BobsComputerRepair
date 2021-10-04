@@ -11,6 +11,7 @@
 import { Component, OnInit } from "@angular/core";
 import { InvoiceService } from "../../shared/invoice.service";
 
+
 @Component({
   selector: "app-purchases-by-service-graph",
   templateUrl: "./purchases-by-service-graph.component.html",
@@ -24,11 +25,11 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
   constructor(private invoiceService: InvoiceService) {
     // call purchases-graph API
-    this.invoiceService.findPurchasesByServiceGraph().subscribe((res) => {
+    this.invoiceService.findPurchasesByServiceGraph().subscribe(res => {
       // map the response data to the purchases variable
-      this.purchases = res["data"];
+      this.purchases = res['data'];
 
-      // loop over the purchases to split out hte services and item count
+      // loop over the purchases to split out the services and item count
       for (const item of this.purchases) {
         this.labels.push(item._id.title);
         this.itemCount.push(item.count);
@@ -60,13 +61,13 @@ export class PurchasesByServiceGraphComponent implements OnInit {
             ],
             data: this.itemCount,
           },
-        ],
+        ]
       };
 
       // verify the data objects structure matches prime ng's expected format
       console.log("Data object");
       console.log(this.data);
-    });
+    })
   }
 
   ngOnInit() {
