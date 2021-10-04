@@ -8,6 +8,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Invoice } from '../invoice';
+import { InvoiceService } from '../invoice.service';
+import { Router } from "@angular/router";
 import  {Message } from 'primeng/api/message';
 import { MessageService } from 'primeng/api';
 
@@ -26,7 +28,7 @@ export class InvoiceSummaryDialogComponent implements OnInit {
   parts: number;
   successMessages: Message[];
 
-  constructor(private dialogRef: MatDialogRef<InvoiceSummaryDialogComponent>, @Inject(MAT_DIALOG_DATA) data) {
+  constructor(private dialogRef: MatDialogRef<InvoiceSummaryDialogComponent>, private invoiceService: InvoiceService, private router: Router, @Inject(MAT_DIALOG_DATA) data) {
     this.invoice = data.invoice;
 
     console.log(`Parts amount: ${this.invoice.partsAmount}`)
@@ -45,10 +47,15 @@ export class InvoiceSummaryDialogComponent implements OnInit {
     
     }
 
-    confirmOrder() {
-      this.successMessages = [
-        {severity: 'success', summary: 'Success', detail: 'Via MessageService'}      ]
+  confirmOrder() {
+    this.invoiceService.createInvoice(this.username, this.invoice).subscribe(
+      (res) => {
+        this.router.navigate(["/"]);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
-
   
 }
