@@ -77,6 +77,13 @@
                 </div>
 
                 <br />
+                <div fxFlex fxLayoutAlign="end">
+                    <button mat-raised-button matDialogClose="cancel" cdkFocusInitial color="warn">
+                        Cancel
+                      </button> &nbsp;&nbsp;
+                    <button mat-raised-button (click)="confirmOrder()" class="hp-background">Confirm Order</button>
+                </div>
+
             </div>
         </mat-card-content>
     </mat-card>
