@@ -13,10 +13,11 @@ import { InvoiceService } from "../../shared/invoice.service";
 
 
 @Component({
-  selector: "app-purchases-by-service-graph",
-  templateUrl: "./purchases-by-service-graph.component.html",
-  styleUrls: ["./purchases-by-service-graph.component.css"],
+  selector: 'app-purchases-by-service-graph',
+  templateUrl: './purchases-by-service-graph.component.html',
+  styleUrls: ['./purchases-by-service-graph.component.css']
 })
+
 export class PurchasesByServiceGraphComponent implements OnInit {
   purchases: any;
   data: any;

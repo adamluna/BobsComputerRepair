@@ -10,8 +10,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Invoice } from '../invoice';
 import { InvoiceService } from '../invoice.service';
 import { Router } from "@angular/router";
-import  {Message } from 'primeng/api/message';
-import { MessageService } from 'primeng/api';
+import { Message } from 'primeng/api/message';
+
 
 @Component({
   selector: 'app-invoice-summary-dialog',
