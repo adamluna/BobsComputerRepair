@@ -96,7 +96,7 @@ router.get('/purchases-graph', async(req, res) => {
             {
                 console.log(purchaseGraph);
                 const findPurchasesByServiceGraphResponse = new BaseResponse('200', 'Query successful', purchaseGraph);
-                res.satus(500).send(findPurchasesByServiceGraphResponse.toObject());
+                res.status(500).send(findPurchasesByServiceGraphResponse.toObject());
             }
         })
     }
