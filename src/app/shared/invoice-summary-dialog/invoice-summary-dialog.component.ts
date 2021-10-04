@@ -47,7 +47,7 @@ export class InvoiceSummaryDialogComponent implements OnInit {
     
     }
 
-  confirmOrder() {
+  confirmOrder(): void {
     this.invoiceService.createInvoice(this.username, this.invoice).subscribe(
       (res) => {
         this.router.navigate(["/"]);
@@ -57,5 +57,5 @@ export class InvoiceSummaryDialogComponent implements OnInit {
       }
     );
   }
-  
+
 }

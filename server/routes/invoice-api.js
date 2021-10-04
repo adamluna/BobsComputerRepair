@@ -23,7 +23,7 @@ router.post('/:userName', async(req, res) => {
     {
         const newInvoice = {
             userName: req.params.userName,
-            lineItems: req.params.lineItems,
+            lineItems: req.body.lineItems,
             partsAmount: req.body.partsAmount,
             laborAmount: req.body.laborAmount,
             lineItemTotal: req.body.lineItemTotal,
