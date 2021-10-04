@@ -122,12 +122,14 @@ router.get('/:roleId', async(req, res) => {
     try
     {
         Role.findOne({'_id': req.params.roleId}, function(err, role) {
+            // on error
             if(err)
             {
                 console.log(err);
                 const findRoleByIdMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
                 res.status(500).send(findRoleByIdMongodbErrorResponse.toObject());
             }
+            // on success
             else
             {
                 console.log(role);
@@ -136,6 +138,7 @@ router.get('/:roleId', async(req, res) => {
             }
         })
     }
+    // catch errors
     catch (e)
     {
         console.log(e);

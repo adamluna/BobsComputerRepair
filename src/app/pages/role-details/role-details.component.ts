@@ -32,7 +32,7 @@ export class RoleDetailsComponent implements OnInit {
       // on error
       }, err => {
         console.log(err);
-      // show users current role on form
+      // show the selected role on the form
       }, () => {
         this.form.controls['text'].setValue(this.role.text);
       }
