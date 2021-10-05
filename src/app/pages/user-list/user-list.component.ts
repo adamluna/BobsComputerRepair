@@ -41,7 +41,7 @@ export class UserListComponent implements OnInit {
           data: {
               recordId,
               dialogHeader: 'Delete Record Dialog',
-              dialogBody: `Are you sure you want to delete user ${recordId}?`
+              dialogBody: `Are you sure you want to delete user ${userId}?`
           },
           disableClose: true,
           width: '800px'
