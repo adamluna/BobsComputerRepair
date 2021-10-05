@@ -19,10 +19,10 @@ import { User } from './../../shared/user.interface';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  users: User [];
+  users: User[];
   displayedColumns = ['userName', 'firstName', 'lastName', 'phoneNumber', 'address', 'email', 'functions'];
 
-  constructor (private dialog: MatDialog, private userService: UserService){
+  constructor (private dialog: MatDialog, private userService: UserService) {
 
       this.userService.findAllUsers().subscribe(res => {
           this.users = res['data'];
@@ -32,16 +32,16 @@ export class UserListComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
 
   }
 
-  delete(userId, recordId): void {
-      const dialogRef = this.dialog.open(DeleteRecordDialogComponent,{
+  delete(userId: string, recordId: string): void {
+      const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
           data: {
               recordId,
               dialogHeader: 'Delete Record Dialog',
-              dialogBody: `Are you sure you want to delete user ${recordId}?`
+              dialogBody: `Are you sure you want to delete user ${userId}?`
           },
           disableClose: true,
           width: '800px'

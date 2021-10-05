@@ -1,7 +1,7 @@
 /**
  * Author: Prof Richard Krasso
  * Modified by: Eunice Lim
- * Date: 19 Sep 2021
+ * Date: 1 Oct 2021
  * Title: user-details.component.ts
 */
 
@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../shared/user.service';
 import { User } from './../../shared/user.interface';
+import { Role } from './../../shared/role.interface';
+import { RoleService } from 'src/app/shared/role.service';
 
 
 @Component({
@@ -22,12 +24,14 @@ export class UserDetailsComponent implements OnInit {
   user: User;
   userId: string;
   form: FormGroup;
-  roles: any;
+  roles: Role[];
+
   constructor(private route: ActivatedRoute, private fb:FormBuilder, private router: Router,
-    private userService: UserService){
+    private userService: UserService, private roleService: RoleService) {
+
         this.userId = this.route.snapshot.paramMap.get('userId');
 
-        this.userService.findUserById(this.userId).subscribe(res =>{
+        this.userService.findUserById(this.userId).subscribe(res => {
             this.user = res['data'];
         }, err => {
             console.log(err);
@@ -37,6 +41,13 @@ export class UserDetailsComponent implements OnInit {
             this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
             this.form.controls.address.setValue(this.user.address);
             this.form.controls.email.setValue(this.user.email);
+            this.form.controls.role.setValue(this.user.role['role']);
+
+            console.log(this.user);
+
+            this.roleService.findAllRoles().subscribe(res => {
+                this.roles = res.data;
+            })
         });
     }
 
@@ -47,18 +58,20 @@ export class UserDetailsComponent implements OnInit {
             lastName: [null, Validators.compose([Validators.required])],
             phoneNumber: [null, Validators.compose([Validators.required])],
             address: [null, Validators.compose([Validators.required])],
-            email: [null, Validators.compose([Validators.required])],
+            email: [null, Validators.compose([Validators.required, Validators.email])],
+            role: [null, Validators.compose([Validators.required])]
         });
     }
 
     //updates form values
-    saveUser(): void{
-        const updatedUser: User ={
+    saveUser(): void {
+        const updatedUser: User = {
             firstName: this.form.controls.firstName.value,
             lastName: this.form.controls.lastName.value,
             phoneNumber: this.form.controls.phoneNumber.value,
             address: this.form.controls.address.value,
-            email: this.form.controls.email.value
+            email: this.form.controls.email.value,
+            role: this.form.controls.role.value
         };
 
         this.userService.updateUser(this.userId, updatedUser).subscribe(res => {

@@ -1,3 +1,10 @@
+/**
+ * Title: Error.component.ts
+ * Author: Professor Krasso
+ * Modified By: Eunice Lim
+ * Date: 30 Sept 2021
+ * Description: Error.component.ts
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -44,13 +44,21 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/verify-security-questions-form/verify-security-questions-form.component';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatListModule} from '@angular/material/list';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatListModule } from '@angular/material/list';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { VerifyUsernameFormComponent } from './shared/verify-username-form/verify-username-form.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 
 
 @NgModule({
@@ -74,7 +82,12 @@ import { VerifyUsernameFormComponent } from './shared/verify-username-form/verif
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
     ResetPasswordFormComponent,
-    VerifyUsernameFormComponent
+    VerifyUsernameFormComponent,
+    RoleListComponent,
+    InvoiceSummaryDialogComponent,
+    RoleCreateComponent,
+    PurchasesByServiceGraphComponent,
+    RoleDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -98,8 +111,10 @@ import { VerifyUsernameFormComponent } from './shared/verify-username-form/verif
     MessageModule,
     MatStepperModule,
     MatListModule,
-    MatSelectModule,      
-        
+    MatSelectModule,
+    MatCheckboxModule,
+    TableModule,    
+    ChartModule,
   ],
   providers: [
     {

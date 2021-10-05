@@ -14,25 +14,40 @@
       </div>
       <div fxFlex></div>
         
-      <!--button to open menu-->
+      <!-- button to open menu -->
       <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
         <mat-icon>perm_identity</mat-icon>
       </button>
 
-      <mat-menu #profileMenu> <!--this menu is shown if profile pic is clicked-->
+      <mat-menu #profileMenu> <!-- this menu is shown if profile pic is clicked -->
         
-
-      <mat-divider></mat-divider>
-
+   
       <button mat-menu-item routerLink='/users'>
         <mat-icon>manage_accounts</mat-icon>
         <span>User Configuration</span>
+      </button>
+
+      <button mat-menu-item routerLink="/roles">
+        <mat-icon>security</mat-icon>
+        <span>Role Configuration</span>
       </button>
 
       <button mat-menu-item routerLink="/security-questions">
         <mat-icon>admin_panel_settings</mat-icon>
         <span>Security Questions Configuration</span>
       </button>
+
+      <button *ngIf="userRole && userRole['role'] === 'admin'" mat-menu-item [matMenuTriggerFor]="reports">
+        <mat-icon>poll</mat-icon>
+        <span>Reports</span>
+      </button>
+
+      <mat-menu #reports="matMenu">
+        <button mat-menu-item routerLink="/purchases-by-service-graph">
+          <mat-icon>pie_chart</mat-icon>
+          <span>Purchases by Service</span>
+        </button>
+      </mat-menu>
 
       <button mat-menu-item (click)="signOut()">
         <mat-icon>logout</mat-icon>

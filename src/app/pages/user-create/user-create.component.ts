@@ -10,6 +10,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { defaultIfEmpty } from "rxjs/operators";
 import { User } from "./../../shared/user.interface";
 import { UserService } from "./../../shared/user.service";
 
@@ -44,10 +45,8 @@ export class UserCreateComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
-      email: [
-        null,
-        Validators.compose([Validators.required, Validators.email]),
-      ],
+      email: [null, Validators.compose([Validators.required, Validators.email])],
+      role: [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -60,6 +59,7 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: this.form.controls.phoneNumber.value,
       address: this.form.controls.address.value,
       email: this.form.controls.email.value,
+      role: this.form.controls.role.value
     };
 
     this.userService.createUser(newUser).subscribe(

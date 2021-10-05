@@ -1,8 +1,90 @@
 <div fxLayout="column">
-  <h1 class="title">
-    Welcome to WEB 450's - Bob's Computer Repair Shop <br />
-    <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait unitl the last minute to begin working on each item.
-    </span>
-  </h1>
+  <div fxFlex>
+    <h1 class="title">
+      Welcome to Bob's Computer Repair Shop <br />
+      <span class="subtitle">
+        Service Repair Form
+      </span>
+    </h1>
+  </div>
+
+  <div fxFlex>
+    <mat-card class="mat-elevated-z0 hp-card-lg">
+      <!-- products form -->
+      <form #invoiceForm="ngForm" (submit)="generateInvoice();">
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutGap="5px">
+            <!-- services -->
+            <div fxFlex>
+              <mat-card class="mat-elevated-z0">
+                <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+                <p-messages [(value)]="successMessages" [enableService]="false"></p-messages>
+
+                <mat-card-subtitle>
+                  Services
+                </mat-card-subtitle>
+
+                <div class="grid-container">
+                  <ng-container *ngFor="let product of products">
+                    <mat-card class="mat-elevation-z8">
+                      <!-- service title -->
+                      <mat-card-title>
+                        <mat-checkbox value="{{ product.price }}" [(ngModel)]="product.checked" [name]="product.title">
+                          {{ product.title }}
+                        </mat-checkbox>
+                      </mat-card-title>
+                      <br />
+              
+                      <!-- service price -->
+                      <mat-card-content>
+                        <mat-list>
+                          <mat-list-item>{{ product.price | currency }}</mat-list-item>
+                        </mat-list>
+                      </mat-card-content>
+                    </mat-card>
+                  </ng-container>
+                </div>
+              </mat-card>
+
+              <br />
+              <mat-divider></mat-divider>
+              <br />
+            </div>
+
+            <!-- standard fees -->
+            <div fxFlex>
+              <mat-card class="mat-elevation-z0 hp-card-sm">
+                <mat-card-subtitle>
+                  Standard Fees
+                </mat-card-subtitle>
+                <mat-card-content>
+                  <div fxLayout="column">
+                    <mat-form-field class="standard-fees" appearance="fill" fxFlex>
+                      <mat-label>Parts</mat-label>
+                      <input matInput [(ngModel)]="invoice.partsAmount" type="number" name="txtPartsAmount" />
+                    </mat-form-field>
+
+                    <mat-form-field class="standard-fees" appearance="fill" fxFlex>
+                      <mat-label>Labor @ 50/hr</mat-label>
+                      <input matInput [(ngModel)]="invoice.laborHours" type="number" name="txtLaborHours" />
+                    </mat-form-field>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <br />
+        <mat-divider></mat-divider>
+        <br />
+
+        <!-- buttons -->
+        <mat-card-actions class="center">
+          <button mat-raised-button type="reset" color="warn">Cancel</button>
+          <button mat-raised-button class="hp-background">Generate Invoice</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
 </div>

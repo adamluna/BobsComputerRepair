@@ -43,6 +43,11 @@ th, td {
     color: #2f2f2d !important;
 }
 
+.chartjs-render-monitor {
+    max-width: 1200px !important;
+    margin: 0 auto;
+}
+
 /* Global custom classes */
 .hp-background {
     background-color: #fdda38;
@@ -90,6 +95,13 @@ th, td {
 .hp-card-sm {
     width: 50%; 
     max-width: 750px; 
+    min-width: 400px;
+    margin: 0 auto;
+}
+
+.hp-card-lg {
+    width: 90%; 
+    max-width: 1250px; 
     min-width: 400px;
     margin: 0 auto;
 }
