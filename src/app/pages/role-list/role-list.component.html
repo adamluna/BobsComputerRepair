@@ -21,10 +21,10 @@
                     <td>{{ role.text }}</td>
                     <td>
                         <button mat-icon-button routerLink="/roles/{{role._id}}">
-                            <mat-icon color="accent">edit</mat-icon>
+                            <mat-icon class="edit-icon">edit</mat-icon>
                         </button>
                         <button mat-icon-button (click)="delete(role._id, role.text)">
-                            <mat-icon color="accent">delete</mat-icon>
+                            <mat-icon color="warn">delete</mat-icon>
                         </button>
                     </td>
                 </tr>
