@@ -2,7 +2,7 @@
     <mat-card class="hp-card">
         <mat-card-title>Users Configuration</mat-card-title>
         <mat-card-subtitle>
-            <button mat-button routerLink="/users/create/new" color="accent">Create</button>
+            <button mat-button routerLink="/users/create/new" color="basic">Create</button>
         </mat-card-subtitle>
 
         <mat-card-content *ngIf="users">
@@ -43,10 +43,10 @@
                     <th mat-header-cell *matHeaderCellDef>Functions</th>
                     <td mat-cell *matCellDef="let element">
                         <button mat-icon-button routerLink="/users/{{element._id}}">
-                            <mat-icon color="accent">edit</mat-icon>
+                            <mat-icon class="edit-icon">edit</mat-icon>
                             </button>
                         <button mat-icon-button (click)="delete(element._id)">
-                        <mat-icon color="accent">delete</mat-icon>
+                        <mat-icon color="warn">delete</mat-icon>
                         </button>                 
                     </td>
                 </ng-container>
