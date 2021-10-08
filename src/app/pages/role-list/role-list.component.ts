@@ -21,6 +21,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class RoleListComponent implements OnInit {
 
   roles: Role[];
+  displayedColumns = ['name', 'functions'];
   errorMessages: Message[];
 
   constructor(private roleService: RoleService, private dialog: MatDialog) {

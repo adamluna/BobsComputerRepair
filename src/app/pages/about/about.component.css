@@ -2,19 +2,20 @@ h1{
     padding-top: 5%;
 }
 
-img{
+img {
     width: 350px;
     display: block;
-    padding-left: 5%;
+    margin-left: 5%;
+    border-radius: 5px;
 }
-.about{
+
+.about {
     margin: auto;
     width: 70%;
     
 }
-.paragraph{
+.paragraph {
     display: block;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin: 0 25px;
     text-justify: auto;
 }

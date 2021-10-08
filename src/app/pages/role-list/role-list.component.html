@@ -4,32 +4,34 @@
         <mat-card-subtitle>
             <button mat-button routerLink="/roles/create/new" color="basic">Create</button>
         </mat-card-subtitle>
-
-        <br />
         
         <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-        <p-table [value]="roles" styleClass="p-datatable-sm" responsiveLayout="scroll">
-            <ng-template pTemplate="header">
-                <tr style="font-size: 14px; font-family: Roboto, 'Helvetica Neue', sans-serif;">
-                    <th style="background-color: white;">Name</th>
-                    <th style="background-color: white;">Functions</th>
-                </tr>              
-            </ng-template>
-            <ng-template pTemplate="body" let-role>
-                <tr style="font-size: 14px; font-family: Roboto, 'Helvetica Neue', sans-serif;">
-                    <td>{{ role.text }}</td>
-                    <td>
+        <mat-card-content *ngIf="roles">
+            <table mat-table [dataSource]="roles">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let role">
+                        {{ role.text }} 
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="functions">
+                    <th mat-header-cell *matHeaderCellDef>Functions</th>
+                    <td mat-cell *matCellDef="let role">
                         <button mat-icon-button routerLink="/roles/{{role._id}}">
                             <mat-icon class="edit-icon">edit</mat-icon>
-                        </button>
+                            </button>
                         <button mat-icon-button (click)="delete(role._id, role.text)">
-                            <mat-icon color="warn">delete</mat-icon>
-                        </button>
+                        <mat-icon color="warn">delete</mat-icon>
+                        </button>                 
                     </td>
-                </tr>
-            </ng-template>
-        </p-table>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card-content>
     </mat-card>
 </div>
 
